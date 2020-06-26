@@ -6,7 +6,10 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+<<<<<<< HEAD
     "axios": "^0.19.2",
+=======
+>>>>>>> 05e90a09d1e4faa3b8e7cff0930cfcb590f4133d
     "firebase": "^7.15.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
