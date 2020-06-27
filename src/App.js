@@ -1,17 +1,18 @@
 import React, { Component, Fragment } from 'react';
+import Search from './components/Search';
 
 class App extends Component {
 
   render() {
     return (
       <Fragment>
-        <Header />
+        {/* <Header /> */}
         <main>
           <Search />
-          <Pairs />
+          {/* <Pairs /> */}
         </main>
         
-        <Footer />
+        {/* <Footer /> */}
 
       </Fragment>
     );

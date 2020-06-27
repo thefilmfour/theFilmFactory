@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
 
 class Search extends Component {
 
@@ -28,23 +29,69 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userTextInput = '',
-      englishFilms = [],
-      englishFilm = {},
-      foreignFilms = [],
-      foreignFilm = {}
+      userTextInput: '',
+      englishFilms: [],
+      // englishFilm: {},
+      // foreignFilms: [],
+      // foreignFilm: {}
     }
   }
 
+  // function tracking the user's input
+  handleChange = (event) => {
+    const searchedMovie = event.target.value;
+    this.setState({
+      userTextInput: searchedMovie,
+    });
+  }
 
+  // function on form submit
+  handleSubmit = (event) => {
+    event.preventDefault();
+    axios({
+      url: 'https://api.themoviedb.org/3/search/movie',
+      params: {
+        api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+        query: this.state.userTextInput,
+        language: 'en-US',
+        include_adult: false,
+      }
+    }).then( response => {
+      const newEnglishFilms = [];
+
+      // push each film data object to the newEnglishFilms array
+      response.data.results.forEach(obj => {
+        newEnglishFilms.push(obj);
+      });
+
+      // filter newEnglishFilms array for english language films and films that have a poster and store it in the englishFilms variable
+      const englishFilms = newEnglishFilms.filter(object => object.original_language = 'en').filter(object => object.poster_path);
+
+      // update the english films state to the filtered englishFilms variable
+      this.setState({
+        englishFilms,
+      });
+    })
+  }
 
   render() {
 
     return (
-      <section>
-        <input type="text" value={this.state.userInput}></input>
-        
-      </section>
+      <Fragment>
+        <form onSubmit={this.handleSubmit}>
+          <input type='text' value={this.state.userTextInput} onChange={this.handleChange}placeholder='Enter Movie'/>
+          <input type='submit' value='Search' />
+        </form>
+
+        {/* section to display the English Films */}
+        <section className='englishFilms'>
+          <ul>
+            <li>
+            {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
+            </li>
+          </ul>
+        </section>
+      </Fragment>
     )
 
   }
