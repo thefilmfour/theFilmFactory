@@ -28,11 +28,11 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userTextInput = '',
-      englishFilms = [],
-      englishFilm = {},
-      foreignFilms = [],
-      foreignFilm = {}
+      userTextInput: '',
+      englishFilms: [],
+      englishFilm: {},
+      foreignFilms: [],
+      foreignFilm: {}
     }
   }
 
