@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
+import FilmPair from './FilmPair';
 
 class Pairs extends Component {
   // displaying the pairs in a list
@@ -58,7 +59,7 @@ class Pairs extends Component {
         <button onClick={this.handleClick}>Click Me</button>
         <ul>
           {this.state.filmPairs.map((filmPair) => {
-            return <li>{filmPair.englishFilm.title}</li>
+           return <FilmPair pair={filmPair} />
           })}
         </ul>
       </section>
@@ -68,7 +69,4 @@ class Pairs extends Component {
 
 export default Pairs;
 
-{/* <img
-  src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-  alt={`Movie poster for ${movie.title}`}
-/>; */}
+

@@ -48,30 +48,30 @@ class Search extends Component {
   // function on form submit
   handleSubmit = (event) => {
     event.preventDefault();
-    axios({
-      url: 'https://api.themoviedb.org/3/search/movie',
-      params: {
-        api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-        query: this.state.userTextInput,
-        language: 'en-US',
-        include_adult: false,
-      }
-    }).then( response => {
-      const newEnglishFilms = [];
+    // axios({
+    //   url: 'https://api.themoviedb.org/3/search/movie',
+    //   params: {
+    //     api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+    //     query: this.state.userTextInput,
+    //     language: 'en-US',
+    //     include_adult: false,
+    //   }
+    // }).then( response => {
+    //   const newEnglishFilms = [];
 
-      // push each film data object to the newEnglishFilms array
-      response.data.results.forEach(obj => {
-        newEnglishFilms.push(obj);
-      });
+    //   // push each film data object to the newEnglishFilms array
+    //   response.data.results.forEach(obj => {
+    //     newEnglishFilms.push(obj);
+    //   });
 
-      // filter newEnglishFilms array for english language films and films that have a poster and store it in the englishFilms variable
-      const englishFilms = newEnglishFilms.filter(object => object.original_language = 'en').filter(object => object.poster_path);
+    //   // filter newEnglishFilms array for english language films and films that have a poster and store it in the englishFilms variable
+    //   const englishFilms = newEnglishFilms.filter(object => object.original_language = 'en').filter(object => object.poster_path);
 
-      // update the english films state to the filtered englishFilms variable
-      this.setState({
-        englishFilms,
-      });
-    })
+    //   // update the english films state to the filtered englishFilms variable
+    //   this.setState({
+    //     englishFilms,
+    //   });
+    // })
   }
 
   render() {
