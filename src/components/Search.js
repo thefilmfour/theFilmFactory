@@ -31,9 +31,9 @@ class Search extends Component {
     this.state = {
       userTextInput: '',
       englishFilms: [],
-      // englishFilm: {},
-      // foreignFilms: [],
-      // foreignFilm: {}
+      englishFilm: {},
+      foreignFilms: [],
+      foreignFilm: {}
     }
   }
 
