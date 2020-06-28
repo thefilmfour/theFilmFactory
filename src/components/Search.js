@@ -81,14 +81,15 @@ class Search extends Component {
     return (
       <Fragment>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.userTextInput} onChange={this.handleChange}placeholder='Enter Movie' />
+          <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
 
         {/* section to display the English Films */}
         <section className='englishFilms'>
+            {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
-          <ul>
+          <ul class="gridContainer">
             {
               this.state.englishFilms.map( object => {
                 return (

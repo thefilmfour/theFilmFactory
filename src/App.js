@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import './App.scss';
 import Header from './components/Header';
 import Search from './components/Search';
 import Pairs from "./components/Pairs";
@@ -8,7 +9,7 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div class="wrapper">
         <Header />
         <main>
           <Search />
@@ -17,7 +18,7 @@ class App extends Component {
         
         <Footer />
 
-      </Fragment>
+      </div>
     );
   }
   
