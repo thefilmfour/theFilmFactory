@@ -85,7 +85,7 @@ class Search extends Component {
           <input type='submit' value='Search' />
         </form>
 
-        {/* section to display the English Films */}
+        {/* section to display the English films */}
         <section className='englishFilms'>
           <h2>Results for "{this.state.userTextInput}"</h2>
           <ul>
@@ -100,6 +100,22 @@ class Search extends Component {
             }
           </ul>
         </section>
+
+        {/* section to display the foreign films */}
+        {/* <section className='foreignFilms'>
+          <h2>Results for "{this.state.userTextInput}"</h2>
+          <ul>
+            {
+              this.state.englishFilms.map( object => {
+                return (
+                  <li key={object.id}>
+                    <button type='button' value={object.id}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </section> */}
       </Fragment>
     )
 
