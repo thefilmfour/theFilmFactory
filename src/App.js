@@ -20,12 +20,19 @@ class App extends Component {
     });
   }
 
+  // function passed as props to the Search component to update the foreignFilm state
+  updateForeignFilmState = (data) => {
+    this.setState({
+      foreignFilm: data,
+    });
+  }
+
   render() {
     return (
       <Fragment>
         <Header />
         <main>
-          <Search updateEnglishFilmState={this.updateEnglishFilmState}/>
+          <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
           {/* <Pairs /> */}
         </main>
         
