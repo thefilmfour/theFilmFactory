@@ -75,24 +75,31 @@ class Search extends Component {
     })
   }
 
+  // function to execute on click of english film poster
   onButtonClick = (event) => {
     const movieId = event.currentTarget.value;
-    // axios({
-    //   url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
-    //   params: {
-    //     api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-    //   }
-    // }).then( response => {
-    //   const newSimilarFilms = [];
-    //   newSimilarFilms.push(response.data.results);
-    //   this.setState({
-    //     similarFilms: newSimilarFilms,
-    //   });
-    //   const similarFilmsCopy = this.state.similarFilms[0];
-    //   const foreignFilms = similarFilmsCopy.filter((obj) => obj.original_language !== 'en' );
-    //   this.props.updateForeignFilms(foreignFilms);
-    // });
 
+    // second axios call
+    axios({
+      url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+      params: {
+        api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+      }
+    }).then( response => {
+      const similarFilms = [];
+      // push the data objects for each film to the similarFilms array
+      response.data.results.forEach( object => {
+        similarFilms.push(object);
+      });
+
+      // filter for foreign language films and films that have a poster and store them in the foreignFilms variable
+      const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
+      
+      // update the foreignFilms state with the filtered array
+      this.setState({
+        foreignFilms,
+      });
+    })
     const englishFilmsCopy = this.state.englishFilms;
 
     // use the id of the chosen film to find its object data and store it in the englishFilm variable
