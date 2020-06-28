@@ -26,14 +26,12 @@ class Search extends Component {
   // 
   //  
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userTextInput: '',
       englishFilms: [],
-      englishFilm: {},
       foreignFilms: [],
-      foreignFilm: {}
     }
   }
 
@@ -45,7 +43,7 @@ class Search extends Component {
     });
   }
 
-  // function on form submit
+  // function to execute on form submit
   handleSubmit = (event) => {
     event.preventDefault();
     axios({
@@ -64,7 +62,7 @@ class Search extends Component {
         newEnglishFilms.push(obj);
       });
 
-      // filter newEnglishFilms array for english language films and films that have a poster and store it in the englishFilms variable
+      // filter newEnglishFilms array for english language films that have a poster and store it in the englishFilms variable
       let filteredEnglishFilms = newEnglishFilms.filter(object => object.original_language = 'en').filter(object => object.poster_path);
 
       // grab only the first ten films and store it in the englishFilms variable
@@ -77,23 +75,89 @@ class Search extends Component {
     })
   }
 
+  // function to execute on click of english film poster
+  onEnglishFilmClick = (event) => {
+    const movieId = event.currentTarget.value;
+
+    // second axios call
+    axios({
+      url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+      params: {
+        api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+      }
+    }).then( response => {
+      const similarFilms = [];
+
+      // push the data objects for each film to the similarFilms array
+      response.data.results.forEach( object => {
+        similarFilms.push(object);
+      });
+
+      // filter for foreign language films that have a poster and store them in the foreignFilms variable
+      const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
+      
+      // update the foreignFilms state with the filtered array
+      this.setState({
+        foreignFilms,
+      });
+    })
+    const englishFilmsCopy = this.state.englishFilms;
+
+    // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
+    const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
+
+    // function from App.js to update the englishFilm state
+    this.props.updateEnglishFilmState(englishFilm);
+  }
+
+  // function to execute on foreign film selection
+  onForeignFilmClick = (event) => {
+    // store the movie id in a variable
+    const movieId = event.currentTarget.value;
+
+    const foreignFilmsCopy = this.state.foreignFilms;
+
+    // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
+    const foreignFilm = foreignFilmsCopy.find( object => object.id === parseInt(movieId));
+    
+    // function from App.js to update the foreignFilm state
+    this.props.updateForeignFilmState(foreignFilm);
+  }
+
   render() {
     return (
       <Fragment>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.userTextInput} onChange={this.handleChange}placeholder='Enter Movie' />
+          <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
 
-        {/* section to display the English Films */}
+        {/* section to display the English films */}
         <section className='englishFilms'>
+            {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
-          <ul>
+          <ul class="gridContainer">
             {
               this.state.englishFilms.map( object => {
                 return (
                   <li key={object.id}>
-                    <button type='button' value={object.id}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    <button type='button' value={object.id} onClick={this.onEnglishFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </section>
+
+        {/* section to display the foreign films */}
+        <section className='foreignFilms'>
+          <h2>Foreign film recommendations based on your English film selection:</h2>
+          <ul>
+            {
+              this.state.foreignFilms.map( object => {
+                return (
+                  <li key={object.id}>
+                    <button type='button' value={object.id} onClick={this.onForeignFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                   </li>
                 )
               })
@@ -102,9 +166,7 @@ class Search extends Component {
         </section>
       </Fragment>
     )
-
   }
-
 }
 
 export default Search;
