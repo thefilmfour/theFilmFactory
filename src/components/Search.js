@@ -26,14 +26,12 @@ class Search extends Component {
   // 
   //  
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userTextInput: '',
       englishFilms: [],
-      englishFilm: {},
       foreignFilms: [],
-      foreignFilm: {}
     }
   }
 
@@ -77,6 +75,33 @@ class Search extends Component {
     })
   }
 
+  onButtonClick = (event) => {
+    const movieId = event.currentTarget.value;
+    // axios({
+    //   url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+    //   params: {
+    //     api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+    //   }
+    // }).then( response => {
+    //   const newSimilarFilms = [];
+    //   newSimilarFilms.push(response.data.results);
+    //   this.setState({
+    //     similarFilms: newSimilarFilms,
+    //   });
+    //   const similarFilmsCopy = this.state.similarFilms[0];
+    //   const foreignFilms = similarFilmsCopy.filter((obj) => obj.original_language !== 'en' );
+    //   this.props.updateForeignFilms(foreignFilms);
+    // });
+
+    const englishFilmsCopy = this.state.englishFilms;
+
+    // use the id of the chosen film to find its object data and store it in the englishFilm variable
+    const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
+
+    // function from App.js to update the englishFilm state
+    this.props.updateEnglishFilmState(englishFilm);
+  }
+
   render() {
     return (
       <Fragment>
@@ -93,7 +118,7 @@ class Search extends Component {
               this.state.englishFilms.map( object => {
                 return (
                   <li key={object.id}>
-                    <button type='button' value={object.id}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    <button type='button' value={object.id} onClick={this.onButtonClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                   </li>
                 )
               })

@@ -5,14 +5,28 @@ import Pairs from "./components/Pairs";
 import Footer from "./components/Footer";
 
 class App extends Component {
+  constructor () {
+    super();
+    this.state = {
+      englishFilm: {},
+      foreignFilm: {},
+    }
+  }
+
+  // function passed as props to the Search component to update the englishFilm state
+  updateEnglishFilmState = (data) => {
+    this.setState({
+      englishFilm: data,
+    });
+  }
 
   render() {
     return (
       <Fragment>
         <Header />
         <main>
-          <Search />
-          <Pairs />
+          <Search updateEnglishFilmState={this.updateEnglishFilmState}/>
+          {/* <Pairs /> */}
         </main>
         
         <Footer />
