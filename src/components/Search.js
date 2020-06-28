@@ -79,15 +79,49 @@ class Search extends Component {
     return (
       <Fragment>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.userTextInput} onChange={this.handleChange}placeholder='Enter Movie'/>
+          <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
 
         {/* section to display the English Films */}
         <section className='englishFilms'>
-          <ul>
-            <li>
             {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
+          <ul class="gridContainer">
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
+            </li>
+            <li>
+              <img src="https://source.unsplash.com/random/500x750" alt="" />
             </li>
           </ul>
         </section>
