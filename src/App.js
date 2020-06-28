@@ -12,7 +12,7 @@ class App extends Component {
         <Header />
         <main>
           <Search />
-          <Pairs />
+          {/* <Pairs /> */}
         </main>
         
         <Footer />
