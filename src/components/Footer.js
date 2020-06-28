@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// https://github.com/FortAwesome/react-fontawesome
+import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
+import '../Footer.css';
 
 class Footer extends Component {
 
@@ -6,7 +10,57 @@ class Footer extends Component {
 
     return (
       <footer>
-        
+        <section>
+          <p>All films provided by <a href="https://www.themoviedb.org/documentation/api">The Movie DB API</a></p>
+          <p>All icons provided by <a href="https://fontawesome.com/license">Font Awesome</a></p>
+        </section>
+        <section>
+
+          <p>Made with <span aria-label="love">♥</span> by</p>
+          <ul>
+            <ul>
+              <li>Cheriele</li>
+              <li>
+                <a href="https://github.com/csmordido" title="Click to access Cheriele's Github page" target="_blank">
+                  <FontAwesomeIcon 
+                    icon={faGithub}
+                  />
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>Melissa</li>
+              <li>
+                <a href="https://github.com/mel-ahls" title="Click to access Melissa's Github page" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                  />
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>Robert</li>
+              <li>
+                <a href="https://github.com/rduhig" title="Click to access Robert's Github page" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                  />
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>Taylor</li>
+              <li>
+                <a href="https://github.com/QuercusTaliare" title="Click to access Taylor's Github page" target="_blank">
+                  <FontAwesomeIcon
+                    icon={faGithub}
+                  />
+                </a>
+              </li>
+            </ul>
+            
+          </ul>
+        </section>
       </footer>
     )
 
