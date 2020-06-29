@@ -79,9 +79,9 @@ class Search extends Component {
   onEnglishFilmClick = async (event) => {
     const movieId = event.currentTarget.value;
 
-    // const englishFilmsCopy = [...this.state.englishFilms];
+    const englishFilmsCopy = [...this.state.englishFilms];
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
-    const englishFilm = this.state.englishFilms.find( object => object.id === parseInt(movieId));
+    const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
 
     // function from App.js to update the englishFilm state
     this.props.updateEnglishFilmState(englishFilm);
@@ -89,7 +89,6 @@ class Search extends Component {
     let foreignFilms = [];
     let totalPages = 1000;
 
-    // while (foreignFilms.length < 20 && counter <= 1000) {
     for (let i = 1; i <= totalPages && foreignFilms.length < 20; i++) {
       // second axios call
       await axios({
@@ -126,10 +125,10 @@ class Search extends Component {
     // store the movie id in a variable
     const movieId = event.currentTarget.value;
 
-    // const foreignFilmsCopy = [...this.state.foreignFilms];
+    const foreignFilmsCopy = [...this.state.foreignFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
-    const foreignFilm = this.state.foreignFilms.find( object => object.id === parseInt(movieId));
+    const foreignFilm = foreignFilmsCopy.find( object => object.id === parseInt(movieId));
     
     // function from App.js to update the foreignFilm state
     this.props.updateForeignFilmState(foreignFilm);
