@@ -87,17 +87,20 @@ class Search extends Component {
     this.props.updateEnglishFilmState(englishFilm);
 
     let foreignFilms = [];
-    let counter = 1;
+    let totalPages = 1000;
 
-    while (foreignFilms.length < 20 && counter <= 1000) {
+    // while (foreignFilms.length < 20 && counter <= 1000) {
+    for (let i = 1; i <= totalPages && foreignFilms.length < 20; i++) {
       // second axios call
       await axios({
         url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
         params: {
           api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-          page: counter,
+          page: i,
         }
       }).then( response => {
+        totalPages = response.data.total_pages;
+        
         // const similarFilms = [];
 
         // push the data objects for each film to the similarFilms array
@@ -110,8 +113,6 @@ class Search extends Component {
         // filter for foreign language films that have a poster and store them in the foreignFilms variable
         // const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
       })
-
-      counter++;
     }
 
     // update the foreignFilms state with the filtered array
