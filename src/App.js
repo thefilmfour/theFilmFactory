@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import './setup.scss';
-import './App.scss';
+
+import './styles/setup.scss';
+import './styles/global.scss';
+import './styles/fontsAndColours.scss';
+
 import Header from './components/Header';
 import Search from './components/Search';
 import Pairs from "./components/Pairs";
@@ -33,9 +36,10 @@ class App extends Component {
     return (
       <div class="wrapper">
         <Header />
+
         <main>
           <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
-          {/* <Pairs /> */}
+          <Pairs />
         </main>
         
         <Footer />
