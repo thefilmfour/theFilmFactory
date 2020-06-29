@@ -76,38 +76,48 @@ class Search extends Component {
   }
 
   // function to execute on click of english film poster
-  onEnglishFilmClick = (event) => {
+  onEnglishFilmClick = async (event) => {
     const movieId = event.currentTarget.value;
 
-    // second axios call
-    axios({
-      url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
-      params: {
-        api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-      }
-    }).then( response => {
-      const similarFilms = [];
-
-      // push the data objects for each film to the similarFilms array
-      response.data.results.forEach( object => {
-        similarFilms.push(object);
-      });
-
-      // filter for foreign language films that have a poster and store them in the foreignFilms variable
-      const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
-      
-      // update the foreignFilms state with the filtered array
-      this.setState({
-        foreignFilms,
-      });
-    })
-    const englishFilmsCopy = this.state.englishFilms;
-
+    const englishFilmsCopy = [...this.state.englishFilms];
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
     const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
 
     // function from App.js to update the englishFilm state
     this.props.updateEnglishFilmState(englishFilm);
+
+    let foreignFilms = [];
+    let totalPages = 1000;
+
+    for (let i = 1; i <= totalPages && foreignFilms.length < 20; i++) {
+      // second axios call
+      await axios({
+        url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+        params: {
+          api_key: '7e436244a51ab62563e1dbbb6bb31f24',
+          page: i,
+        }
+      }).then( response => {
+        totalPages = response.data.total_pages;
+        
+        // const similarFilms = [];
+
+        // push the data objects for each film to the similarFilms array
+        response.data.results.forEach( object => {
+          if (object.original_language !== 'en' && object.poster_path && !foreignFilms.some( film => film.id === object.id) && foreignFilms.length < 20) {
+            foreignFilms.push(object);
+          }
+        });
+
+        // filter for foreign language films that have a poster and store them in the foreignFilms variable
+        // const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
+      })
+    }
+
+    // update the foreignFilms state with the filtered array
+    this.setState({
+      foreignFilms,
+    });
   }
 
   // function to execute on foreign film selection
@@ -115,7 +125,7 @@ class Search extends Component {
     // store the movie id in a variable
     const movieId = event.currentTarget.value;
 
-    const foreignFilmsCopy = this.state.foreignFilms;
+    const foreignFilmsCopy = [...this.state.foreignFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
     const foreignFilm = foreignFilmsCopy.find( object => object.id === parseInt(movieId));
@@ -136,7 +146,7 @@ class Search extends Component {
         <section className='englishFilms'>
             {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
-          <ul class="gridContainer">
+          <ul className='gridContainer'>
             {
               this.state.englishFilms.map( object => {
                 return (
@@ -152,7 +162,7 @@ class Search extends Component {
         {/* section to display the foreign films */}
         <section className='foreignFilms'>
           <h2>Foreign film recommendations based on your English film selection:</h2>
-          <ul>
+          <ul className='gridContainer'>
             {
               this.state.foreignFilms.map( object => {
                 return (
