@@ -48,6 +48,9 @@ class Pairs extends Component {
       for (let entry in data) {
         newState.push(data[entry]);
       }
+      // 2. b) Reverse copy of State
+      const reverseState = newState.reverse();
+
       // 3. Set State with changed copy
       this.setState({ filmPairs: newState });
     });

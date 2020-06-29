@@ -1,7 +1,19 @@
 import React, { Component, Fragment } from 'react';
+import firebase from '../firebase';
 import FilmPair from './FilmPair';
 
 class CurrentPair extends Component {
+
+  savePair = () => {
+
+    const dbRef = firebase.database().ref();
+
+    dbRef.push({
+      englishFilm: this.props.englishFilm,
+      foreignFilm: this.props.foreignFilm
+    });
+
+  }
 
   render() {
 
@@ -15,7 +27,7 @@ class CurrentPair extends Component {
         <h3>Film Pairing</h3>
         <p>If you liked that film, you might like this one...</p>
         <FilmPair pair={pair}/>
-        <button>Save Pair</button>
+        <button onClick={this.savePair}>Save Pair</button>
       </Fragment>
     )
 
