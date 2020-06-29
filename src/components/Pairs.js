@@ -14,24 +14,25 @@ class Pairs extends Component {
     };
   }
 
-  handleClick = (event) => {
-    // event.preventDefault()
-    axios({
-      url: `https://api.themoviedb.org/3/movie/308/similar`,
-      params: {
-        api_key: "ac8a1621bd544ad33438bf381952729f",
-      },
-    }).then((response) => {
-      const filmPair = {
-        englishFilm: response.data.results[0],
-        foreignFilm: response.data.results[1],
-      };
+  // Event Handler for adding practice data to database - CAN BE DELETED EVENTUALLY
+  // handleClick = (event) => {
+  //   // event.preventDefault()
+  //   axios({
+  //     url: `https://api.themoviedb.org/3/movie/308/similar`,
+  //     params: {
+  //       api_key: "ac8a1621bd544ad33438bf381952729f",
+  //     },
+  //   }).then((response) => {
+  //     const filmPair = {
+  //       englishFilm: response.data.results[0],
+  //       foreignFilm: response.data.results[1],
+  //     };
 
-      const dbRef = firebase.database().ref();
+  //     const dbRef = firebase.database().ref();
 
-      dbRef.push(filmPair);
-    });
-  };
+  //     dbRef.push(filmPair);
+  //   });
+  // };
 
 
 
@@ -48,7 +49,7 @@ class Pairs extends Component {
       for (let entry in data) {
         newState.push(data[entry]);
       }
-      // 2. b) Reverse copy of State
+      // 2. b) Reverse copy of State, so newest entries are display first
       const reverseState = newState.reverse();
 
       // 3. Set State with changed copy
@@ -60,9 +61,11 @@ class Pairs extends Component {
   render() {
     return (
       <section>
-        <button onClick={this.handleClick}>Click Me</button>
+        {/* Button used to add practice data to database. CAN BE DELETED EVENTUALLY */}
+        {/* <button onClick={this.handleClick}>Click Me</button> */}
         <ul>
-          {this.state.filmPairs.map((filmPair) => {
+          {this.state.filmPairs.map((filmPair, index) => {
+            console.log(filmPair);
            return <FilmPair pair={filmPair} />
           })}
         </ul>

@@ -8,6 +8,7 @@ class CurrentPair extends Component {
 
     const dbRef = firebase.database().ref();
 
+    // Adds film pair object to database
     dbRef.push({
       englishFilm: this.props.englishFilm,
       foreignFilm: this.props.foreignFilm
@@ -24,10 +25,12 @@ class CurrentPair extends Component {
 
     return (
       <Fragment>
+
         <h3>Film Pairing</h3>
         <p>If you liked that film, you might like this one...</p>
         <FilmPair pair={pair}/>
         <button onClick={this.savePair}>Save Pair</button>
+        
       </Fragment>
     )
 
