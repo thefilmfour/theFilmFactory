@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../filmpair.css";
 
 class FilmPair extends Component {
 
@@ -8,29 +9,53 @@ class FilmPair extends Component {
     const {englishFilm, foreignFilm} = this.props.pair
 
     return (
-      <ul>
-        <li>
-          <h3>{englishFilm.title}</h3>
-          <p>{englishFilm.release_date.slice(0, 4)}</p>
-          <p>{englishFilm.overview}</p>
-          <p>{englishFilm.vote_average}</p>
-          <img
-            src={`http://image.tmdb.org/t/p/w500/${englishFilm.poster_path}`}
-            alt={`Movie poster for ${englishFilm.title}`}
-          />
+      <section className="wrapper">
+      <ul className="pair">
+        <li className="film-flex">
+          <div className="pair-info">
+            <h3>{englishFilm.title}</h3>
+            <p className="date">{englishFilm.release_date.slice(0, 4)}</p>
+            <p><i class="fas fa-star"></i> {englishFilm.vote_average}/10</p>
+            <p>{englishFilm.overview}</p>
+          </div>
+          <div className="pair-poster">
+            <img
+              src={`http://image.tmdb.org/t/p/w500/${englishFilm.poster_path}`}
+              alt={`Movie poster for ${englishFilm.title}`}
+            />
+          </div>
         </li>
         
-        <li>
-          <h3>{foreignFilm.title}</h3>
-          <p>{foreignFilm.release_date.slice(0, 4)}</p>
-          <p>{foreignFilm.overview}</p>
-          <p>{foreignFilm.vote_average}</p>
-          <img
-            src={`http://image.tmdb.org/t/p/w500/${foreignFilm.poster_path}`}
-            alt={`Movie poster for ${foreignFilm.title}`}
-          />
+        <li className="film-flex">
+          <div className="pair-info">
+            <h3>{englishFilm.title}</h3>
+            <p className="date">{englishFilm.release_date.slice(0, 4)}</p>
+            <p><i class="fas fa-star"></i> {englishFilm.vote_average}/10</p>
+            <p>{englishFilm.overview}</p>
+          </div>
+          <div className="pair-poster">
+            <img
+              src={`http://image.tmdb.org/t/p/w500/${englishFilm.poster_path}`}
+              alt={`Movie poster for ${englishFilm.title}`}
+            />
+          </div>
         </li>
+        {/* <li className="film-flex">
+          <div className="pair-info">
+            <h3>{foreignFilm.title}</h3>
+            <p className="date">{foreignFilm.release_date.slice(0, 4)}</p>
+            <p><i class="fas fa-star"></i> {foreignFilm.vote_average}/10</p>
+            <p>{foreignFilm.overview}</p>
+          </div>
+          <div className="pair-poster">
+            <img
+              src={`http://image.tmdb.org/t/p/w500/${foreignFilm.poster_path}`}
+              alt={`Movie poster for ${foreignFilm.title}`}
+            />
+          </div>
+        </li> */}
       </ul>
+      </section>
     );
   }
 }
