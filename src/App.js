@@ -39,7 +39,7 @@ class App extends Component {
 
         <main>
           <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
-          <Pairs />
+          {/* <Pairs /> */}
         </main>
         
         <Footer />
