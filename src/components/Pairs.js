@@ -46,8 +46,12 @@ class Pairs extends Component {
       // 1. b) Get information from database
       const data = response.val();
       // 2. Make changes to copy of State
+      // Include id property for key attribute when mapping out multiple FilmPair components
       for (let entry in data) {
-        newState.push(data[entry]);
+        newState.push({
+          pair: data[entry],
+          id: entry
+        });
       }
       // 2. b) Reverse copy of State, so newest entries are display first
       const reverseState = newState.reverse();
@@ -64,9 +68,8 @@ class Pairs extends Component {
         {/* Button used to add practice data to database. CAN BE DELETED EVENTUALLY */}
         {/* <button onClick={this.handleClick}>Click Me</button> */}
         <ul>
-          {this.state.filmPairs.map((filmPair, index) => {
-            console.log(filmPair);
-           return <FilmPair pair={filmPair} />
+          {this.state.filmPairs.map((filmPair) => {
+           return <FilmPair pair={filmPair.pair} key={filmPair.id}/>
           })}
         </ul>
       </section>
