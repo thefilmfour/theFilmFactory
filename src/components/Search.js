@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import '../styles/Search.scss';
 
 class Search extends Component {
 
