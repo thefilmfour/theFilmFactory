@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div class="wrapper">
+      <div className='wrapper'>
         <Header />
 
         <main>
