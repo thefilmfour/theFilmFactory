@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+
 import "../filmpair.css";
+
+import '../styles/FilmPair.scss';
+
 
 class FilmPair extends Component {
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../styles/Pairs.scss';
 import firebase from '../firebase';
 import FilmPair from './FilmPair';
 

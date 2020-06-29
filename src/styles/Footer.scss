@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+}
+
+footer section {
+  flex: 1 1 auto;
+}
+
+footer .attributions a {
+  text-decoration: underline;
+}
+
+footer .team-members {
+  display: flex;
+}
