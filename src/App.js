@@ -40,7 +40,7 @@ class App extends Component {
 
         <main>
           <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
-          {
+          { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
             (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
               ? <CurrentPair englishFilm={this.state.englishFilm} foreignFilm={this.state.foreignFilm} />
               : null
