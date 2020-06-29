@@ -125,10 +125,10 @@ class Search extends Component {
     // store the movie id in a variable
     const movieId = event.currentTarget.value;
 
-    const foreignFilmsCopy = this.state.foreignFilms;
+    // const foreignFilmsCopy = [...this.state.foreignFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
-    const foreignFilm = foreignFilmsCopy.find( object => object.id === parseInt(movieId));
+    const foreignFilm = this.state.foreignFilms.find( object => object.id === parseInt(movieId));
     
     // function from App.js to update the foreignFilm state
     this.props.updateForeignFilmState(foreignFilm);
