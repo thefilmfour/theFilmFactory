@@ -83,7 +83,7 @@ class Search extends Component {
         englishFilms,
       });
     }).catch( error => {
-      if (error && !this.state.englishFilms.length) {
+      if (error && !this.state.englishFilms) {
         this.setState({
           hasError: true,
         });
@@ -128,7 +128,13 @@ class Search extends Component {
             foreignFilms.push(object);
           }
         });
-      })
+      }).catch( error => {
+        if (error && !this.state.foreignFilms) {
+          this.setState({
+            hasError: true,
+          });
+        }
+      });
     }
 
     // update the foreignFilms state with the filtered array

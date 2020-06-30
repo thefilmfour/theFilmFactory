@@ -4,7 +4,6 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import '../styles/errorMessage.scss';
 
 const ErrorMessage = ({updateHasErrorState}) => {
-  console.log('error message');
   return (
     <div className='errorMessage'>
       <p>Something went wrong,</p>
