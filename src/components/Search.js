@@ -83,7 +83,7 @@ class Search extends Component {
         englishFilms,
       });
     }).catch( error => {
-      if (error && !this.state.englishFilms) {
+      if (error && !this.state.englishFilms.length) {
         this.setState({
           hasError: true,
         });
@@ -101,6 +101,7 @@ class Search extends Component {
 
     const englishFilmsCopy = [...this.state.englishFilms];
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
+    
     const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
 
     // function from App.js to update the englishFilm state
@@ -129,7 +130,7 @@ class Search extends Component {
           }
         });
       }).catch( error => {
-        if (error && !this.state.foreignFilms) {
+        if (error && !this.state.foreignFilms.length) {
           this.setState({
             hasError: true,
           });
