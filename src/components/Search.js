@@ -130,11 +130,11 @@ class Search extends Component {
           }
         });
       }).catch( error => {
-        if (error && !this.state.foreignFilms.length) {
-          this.setState({
-            hasError: true,
-          });
-        }
+        // if (error && !this.state.foreignFilms.length) {
+        //   this.setState({
+        //     hasError: true,
+        //   });
+        // }
       });
     }
 
