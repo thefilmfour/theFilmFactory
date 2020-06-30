@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import './styles/setup.scss';
 import './styles/global.scss';
@@ -35,22 +35,31 @@ class App extends Component {
 
   render() {
     return (
-      <div className='wrapper'>
+      <Fragment>
         <Header />
 
         <main>
-          <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
-          { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
-            (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
-              ? <CurrentPair englishFilm={this.state.englishFilm} foreignFilm={this.state.foreignFilm} />
-              : null
-          }
-          <Pairs />
+          <div className="wrapper">
+            <Search
+              updateEnglishFilmState={this.updateEnglishFilmState}
+              updateForeignFilmState={this.updateForeignFilmState}
+            />
+            {
+              // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
+              Object.keys(this.state.englishFilm).length !== 0 &&
+              Object.keys(this.state.foreignFilm).length !== 0 ? (
+                <CurrentPair
+                  englishFilm={this.state.englishFilm}
+                  foreignFilm={this.state.foreignFilm}
+                />
+              ) : null
+            }
+            <Pairs />
+          </div>
         </main>
-        
-        <Footer />
 
-      </div>
+        <Footer />
+      </Fragment>
     );
   }
   

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import "../filmpair.css";
-
 import '../styles/FilmPair.scss';
 
 
@@ -13,7 +11,6 @@ class FilmPair extends Component {
     const {englishFilm, foreignFilm} = this.props.pair
 
     return (
-      <section className="wrapper">
       <ul className="pair">
         <li className="film-flex">
           <div className="pair-info">
@@ -44,22 +41,7 @@ class FilmPair extends Component {
             />
           </div>
         </li>
-        {/* <li className="film-flex">
-          <div className="pair-info">
-            <h3>{foreignFilm.title}</h3>
-            <p className="date">{foreignFilm.release_date.slice(0, 4)}</p>
-            <p><i class="fas fa-star"></i> {foreignFilm.vote_average}/10</p>
-            <p>{foreignFilm.overview}</p>
-          </div>
-          <div className="pair-poster">
-            <img
-              src={`http://image.tmdb.org/t/p/w500/${foreignFilm.poster_path}`}
-              alt={`Movie poster for ${foreignFilm.title}`}
-            />
-          </div>
-        </li> */}
       </ul>
-      </section>
     );
   }
 }
