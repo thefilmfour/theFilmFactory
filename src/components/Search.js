@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+import ErrorMessage from './ErrorMessage';
 import '../styles/Search.scss';
 
 class Search extends Component {
@@ -34,6 +35,7 @@ class Search extends Component {
       englishFilms: [],
       foreignFilms: [],
       isLoading: '',
+      hasError: false,
     }
   }
 
@@ -47,9 +49,13 @@ class Search extends Component {
 
   // function to execute on form submit
   handleSubmit = (event) => {
+    this.setState({
+      foreignFilms: [],
+    });
+    
     event.preventDefault();
     axios({
-      url: 'https://api.themoviedb.org/3/search/movie',
+      url: 'https://api.themoviedb.org/3/search/movi',
       params: {
         api_key: '7e436244a51ab62563e1dbbb6bb31f24',
         query: this.state.userTextInput,
@@ -75,7 +81,14 @@ class Search extends Component {
       this.setState({
         englishFilms,
       });
-    })
+    }).catch( error => {
+      if (error && !this.state.englishFilms.length) {
+        console.log(error);
+        this.setState({
+          hasError: true,
+        });
+      }
+    });
   }
 
   // function to execute on click of english film poster
@@ -140,6 +153,12 @@ class Search extends Component {
     this.props.updateForeignFilmState(foreignFilm);
   }
 
+  updateHasErrorState = () => {
+    this.setState({
+      hasError: false,
+    });
+  }
+
   render() {
     return (
       <Fragment>
@@ -180,8 +199,9 @@ class Search extends Component {
                 }
               </ul>
             </section>
-          
         }
+
+        {this.state.hasError ? <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> : null}
       </Fragment>
     )
   }
