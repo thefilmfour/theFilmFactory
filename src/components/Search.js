@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
+import LoadingPage from './LoadingPage';
 import '../styles/Search.scss';
 
 class Search extends Component {
@@ -55,7 +56,7 @@ class Search extends Component {
     
     event.preventDefault();
     axios({
-      url: 'https://api.themoviedb.org/3/search/movi',
+      url: 'https://api.themoviedb.org/3/search/movie',
       params: {
         api_key: '7e436244a51ab62563e1dbbb6bb31f24',
         query: this.state.userTextInput,
@@ -83,7 +84,6 @@ class Search extends Component {
       });
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
-        console.log(error);
         this.setState({
           hasError: true,
         });
@@ -184,7 +184,7 @@ class Search extends Component {
         </section>
         {
           this.state.isLoading
-          ? <p>Searching database...</p> 
+          ? <LoadingPage />
           : <section className='foreignFilms'>
               <h2>Foreign film recommendations based on your English film selection:</h2>
               <ul className='gridContainer'>

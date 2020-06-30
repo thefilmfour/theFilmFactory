@@ -14,8 +14,4 @@ const ErrorMessage = ({updateHasErrorState}) => {
   )
 }
 
-// const handleClick = ({updateHasErrorState}) => {
-//   ();
-// }
-
 export default ErrorMessage;
