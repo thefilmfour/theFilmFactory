@@ -6,35 +6,13 @@ import '../styles/Search.scss';
 
 class Search extends Component {
 
-
-  // text input has onChange handler connecting it to userInput in state
-  // componentDidMount
-  // 1st Axios -> wait until this returns 
-  //  -This will take the user Input and will query the endpoint
-  //  -Return an array of objects (each representing a film)
-  //  -Display a list of movies (~10 results)
-  //    -Movie posters
-  //  -User can choose the correct movie 
-  //    -Click Event
-  // 2nd Axios
-  //  -use englishFilm's id to make 2nd call
-  //  -while loop until foreignFilms array reaches 20 films 
-  //    -page counter
-  //    -return array of foreignFilm objects
-  //  -display list of foreign films (posters)
-  //    -each with a click event
-  //  -user selects a foreign film
-  //    -creates a pair of English film and Foreign film 
-  //    -This is placed in Firebase 
-  // 
-  //  
-
   constructor(props) {
     super(props);
     this.state = {
       userTextInput: '',
       englishFilms: [],
       foreignFilms: [],
+      totalPages: 0,
       isLoading: '',
       hasError: false,
     }
@@ -100,28 +78,29 @@ class Search extends Component {
     const movieId = event.currentTarget.value;
 
     const englishFilmsCopy = [...this.state.englishFilms];
+
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
-    
     const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
 
     // function from App.js to update the englishFilm state
     this.props.updateEnglishFilmState(englishFilm);
 
     let foreignFilms = [];
-    let totalPages = 1000;
 
-    for (let i = 1; i <= totalPages && foreignFilms.length < 20; i++) {
+    for (let i = 0; i <= this.state.totalPages && foreignFilms.length < 20; i++) {
       // second axios call
       await axios({
         url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
         params: {
           api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-          page: i,
+          page: i + 1,
         }
       }).then( response => {
-        totalPages = response.data.total_pages;
-        
-        // const similarFilms = [];
+        const totalPages = response.data.total_pages;
+
+        this.setState({
+          totalPages,
+        });
 
         // push the data objects for each film to the similarFilms array
         response.data.results.forEach( object => {
@@ -130,11 +109,12 @@ class Search extends Component {
           }
         });
       }).catch( error => {
-        // if (error && !this.state.foreignFilms.length) {
-        //   this.setState({
-        //     hasError: true,
-        //   });
-        // }
+        if (error && !this.state.foreignFilms.length) {
+          this.setState({
+            hasError: true,
+            totalPages: '0',
+          });
+        }
       });
     }
 
@@ -163,6 +143,7 @@ class Search extends Component {
   updateHasErrorState = () => {
     this.setState({
       hasError: false,
+      totalPages: 0,
     });
   }
 
