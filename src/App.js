@@ -63,6 +63,8 @@ class App extends Component {
               ? <CurrentPair 
                   englishFilm={this.state.englishFilm} 
                   foreignFilm={this.state.foreignFilm} 
+                  updateEnglishFilmState={this.updateEnglishFilmState}
+                  updateForeignFilmState={this.updateForeignFilmState}
                   scrollToPairs={this.scrollToPairs} 
                   scrollToSearch={this.scrollToSearch}
                 />

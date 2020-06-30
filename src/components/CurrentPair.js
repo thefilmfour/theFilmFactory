@@ -17,6 +17,9 @@ class CurrentPair extends Component {
       foreignFilm: this.props.foreignFilm
     });
 
+    // this.props.updateEnglishFilmState({});
+    // this.props.updateForeignFilmState({});
+
   }
 
   render() {
