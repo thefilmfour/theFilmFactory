@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import './styles/setup.scss';
 import './styles/global.scss';
@@ -49,10 +49,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className='wrapper'>
+      <Fragment>
         <Header />
 
         <main>
+
+          <div className="wrapper">
+            
           <Search 
             updateEnglishFilmState={this.updateEnglishFilmState} 
             updateForeignFilmState={this.updateForeignFilmState} 
@@ -71,11 +74,13 @@ class App extends Component {
               : null
           }
           <Pairs PairsRef={this.PairsRef} />
-        </main>
-        
-        <Footer />
+            
+          </div>
 
-      </div>
+        </main>
+
+        <Footer />
+      </Fragment>
     );
   }
   
