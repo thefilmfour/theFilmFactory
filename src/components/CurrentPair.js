@@ -17,8 +17,6 @@ class CurrentPair extends Component {
       foreignFilm: this.props.foreignFilm
     });
 
-    this.props.scrollToPairs();
-
   }
 
   render() {
@@ -35,7 +33,22 @@ class CurrentPair extends Component {
         <h3>Film Pairing</h3>
         <p>If you liked that film, you might like this one...</p>
         <FilmPair pair={pair}/>
-        <button onClick={() => this.savePair}>Save Pair</button>
+        <button onClick={() => {
+          // Saves pair in database
+          this.savePair();
+          // Scrolls to Pairs component
+          this.props.scrollToPairs();
+        }}>
+          Save Pair
+        </button>
+        <button onClick={() => {
+
+          // Scrolls to Search component
+          this.props.scrollToSearch();
+
+        }}>
+          Search Again
+        </button>
 
       </Fragment>
     )
