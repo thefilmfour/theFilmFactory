@@ -17,6 +17,9 @@ class App extends Component {
       englishFilm: {},
       foreignFilm: {},
     }
+
+    this.PairsRef = React.createRef();
+
   }
 
   // function passed as props to the Search component to update the englishFilm state
@@ -33,6 +36,11 @@ class App extends Component {
     });
   }
 
+  // Scroll to Pairs component
+  scrollToPairs = () => {
+    window.scrollTo(0, this.PairsRef.current.offsetTop)
+  }
+
   render() {
     return (
       <div className='wrapper'>
@@ -42,10 +50,10 @@ class App extends Component {
           <Search updateEnglishFilmState={this.updateEnglishFilmState} updateForeignFilmState={this.updateForeignFilmState} />
           { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
             (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
-              ? <CurrentPair englishFilm={this.state.englishFilm} foreignFilm={this.state.foreignFilm} />
+              ? <CurrentPair englishFilm={this.state.englishFilm} foreignFilm={this.state.foreignFilm} scrollToPairs={this.scrollToPairs}/>
               : null
           }
-          <Pairs />
+          <Pairs PairsRef={this.PairsRef}/>
         </main>
         
         <Footer />
