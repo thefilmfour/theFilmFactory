@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import '../styles/Search.scss';
+import Modal from './Modal';
 
 class Search extends Component {
 
@@ -33,7 +34,32 @@ class Search extends Component {
       userTextInput: '',
       englishFilms: [],
       foreignFilms: [],
-    }
+      modal: {
+        film: {},
+        isForeign: false,
+        display: false
+      }
+    };
+  }
+
+  // function to display the film details modal
+  displayFilmModal = (film, isForeign = false) => {
+    this.setState({
+      modal: {
+        film: film,
+        isForeign: isForeign,
+        display: true
+      }
+    });
+  }
+
+  // function to close the film details modal
+  closeFilmModal = () => {
+    this.setState({
+      modal: {
+        display: false
+      }
+    });
   }
 
   // function tracking the user's input
@@ -73,14 +99,15 @@ class Search extends Component {
       this.setState({
         englishFilms,
       });
-    })
+    });
   }
-
+  
   // function to execute on click of english film poster
-  onEnglishFilmClick = async (event) => {
-    const movieId = event.currentTarget.value;
-
+  selectEnglishFilm = async () => {
+    this.closeFilmModal();
+    const movieId = this.state.modal.film.id;
     const englishFilmsCopy = [...this.state.englishFilms];
+
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
     const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
 
@@ -88,7 +115,7 @@ class Search extends Component {
     this.props.updateEnglishFilmState(englishFilm);
 
     let foreignFilms = [];
-    let totalPages = 1000;
+    let totalPages = 1;
 
     for (let i = 1; i <= totalPages && foreignFilms.length < 20; i++) {
       // second axios call
@@ -100,8 +127,6 @@ class Search extends Component {
         }
       }).then( response => {
         totalPages = response.data.total_pages;
-        
-        // const similarFilms = [];
 
         // push the data objects for each film to the similarFilms array
         response.data.results.forEach( object => {
@@ -109,23 +134,19 @@ class Search extends Component {
             foreignFilms.push(object);
           }
         });
-
-        // filter for foreign language films that have a poster and store them in the foreignFilms variable
-        // const foreignFilms = similarFilms.filter( object => object.original_language !== 'en' ).filter(object => object.poster_path);
-      })
+      });
     }
 
     // update the foreignFilms state with the filtered array
     this.setState({
-      foreignFilms,
+      foreignFilms
     });
   }
 
   // function to execute on foreign film selection
-  onForeignFilmClick = (event) => {
-    // store the movie id in a variable
-    const movieId = event.currentTarget.value;
-
+  selectForeignFilm = () => {
+    this.closeFilmModal();
+    const movieId = this.state.modal.film.id;
     const foreignFilmsCopy = [...this.state.foreignFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
@@ -138,6 +159,15 @@ class Search extends Component {
   render() {
     return (
       <Fragment>
+        {
+          this.state.modal.display &&
+          <Modal
+            film={this.state.modal.film}
+            closeFilmModal={this.closeFilmModal}
+            selectFilm={this.state.modal.isForeign ? this.selectForeignFilm : this.selectEnglishFilm}
+          />
+        }
+
         <form onSubmit={this.handleSubmit}>
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
@@ -152,7 +182,7 @@ class Search extends Component {
               this.state.englishFilms.map( object => {
                 return (
                   <li key={object.id}>
-                    <button type='button' value={object.id} onClick={this.onEnglishFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    <button type='button' onClick={() => this.displayFilmModal(object)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                   </li>
                 )
               })
@@ -168,7 +198,7 @@ class Search extends Component {
               this.state.foreignFilms.map( object => {
                 return (
                   <li key={object.id}>
-                    <button type='button' value={object.id} onClick={this.onForeignFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                   </li>
                 )
               })

@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       englishFilm: {},
-      foreignFilm: {},
+      foreignFilm: {}
     }
   }
 
