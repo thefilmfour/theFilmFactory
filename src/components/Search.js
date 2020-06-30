@@ -86,6 +86,8 @@ class Search extends Component {
 
     // function from App.js to update the englishFilm state
     this.props.updateEnglishFilmState(englishFilm);
+    // Error handling: If user selects an English Film, then selects a Foreign Film, and then re-selects an English film, this will make sure the CurrentPair is not rendering until another ForeignFilm has been selected (CurrentPair won't render until both englishFilm and foreignFilm are populated in App's state)
+    this.props.updateForeignFilmState({});
 
     let foreignFilms = [];
     let totalPages = 1000;
@@ -138,7 +140,7 @@ class Search extends Component {
   render() {
     return (
       <Fragment>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} ref={this.props.SearchRef}>
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>

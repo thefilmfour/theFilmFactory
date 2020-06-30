@@ -64,7 +64,7 @@ class Pairs extends Component {
 
   render() {
     return (
-      <section>
+      <section ref={this.props.PairsRef}>
         {/* Button used to add practice data to database. CAN BE DELETED EVENTUALLY */}
         {/* <button onClick={this.handleClick}>Click Me</button> */}
         <h2>Movies To Watch</h2>
