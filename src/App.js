@@ -17,6 +17,10 @@ class App extends Component {
       englishFilm: {},
       foreignFilm: {},
     }
+
+    this.SearchRef = React.createRef();
+    this.PairsRef = React.createRef();
+
   }
 
   // function passed as props to the Search component to update the englishFilm state
@@ -33,29 +37,46 @@ class App extends Component {
     });
   }
 
+  // Scroll to Search component
+  scrollToSearch = () => {
+    window.scrollTo(0, this.SearchRef.current.offsetTop)
+  }
+
+  // Scroll to Pairs component
+  scrollToPairs = () => {
+    window.scrollTo(0, this.PairsRef.current.offsetTop)
+  }
+
   render() {
     return (
       <Fragment>
         <Header />
 
         <main>
+
           <div className="wrapper">
-            <Search
-              updateEnglishFilmState={this.updateEnglishFilmState}
-              updateForeignFilmState={this.updateForeignFilmState}
-            />
-            {
-              // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
-              Object.keys(this.state.englishFilm).length !== 0 &&
-              Object.keys(this.state.foreignFilm).length !== 0 ? (
-                <CurrentPair
-                  englishFilm={this.state.englishFilm}
-                  foreignFilm={this.state.foreignFilm}
+            
+          <Search 
+            updateEnglishFilmState={this.updateEnglishFilmState} 
+            updateForeignFilmState={this.updateForeignFilmState} 
+            SearchRef={this.SearchRef}
+          />
+          { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
+            (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
+              ? <CurrentPair 
+                  englishFilm={this.state.englishFilm} 
+                  foreignFilm={this.state.foreignFilm} 
+                  updateEnglishFilmState={this.updateEnglishFilmState}
+                  updateForeignFilmState={this.updateForeignFilmState}
+                  scrollToPairs={this.scrollToPairs} 
+                  scrollToSearch={this.scrollToSearch}
                 />
-              ) : null
-            }
-            <Pairs />
+              : null
+          }
+          <Pairs PairsRef={this.PairsRef} />
+            
           </div>
+
         </main>
 
         <Footer />
