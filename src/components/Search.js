@@ -14,7 +14,7 @@ class Search extends Component {
       englishFilms: [],
       foreignFilms: [],
       totalPages: 0,
-      isLoading: '',
+      isLoading: true,
       hasError: false,
       modal: {
         film: {},
