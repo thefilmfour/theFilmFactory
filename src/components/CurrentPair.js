@@ -5,12 +5,23 @@ import FilmPair from './FilmPair';
 
 class CurrentPair extends Component {
 
-  // SAVE PAIR FUNCTION - Adds film pair to database
-  // Event Listener connected to Save Pair button
+  constructor() {
+    super();
+    this.state = {
+      savePairActive: true 
+    }
+  }
+
   /**
-   * Pushes the selected film pair to Firebase
-   */
+   * Adds a film pair object to the database
+   * Connected to an event listener on the Save Pair button
+  */
   savePair = () => {
+
+    // These lines will remove CurrentPair
+    // Bug: If these two lines are used, the scrollToPair method will not work properly because of CurrentPair disappearing 
+    // this.props.updateEnglishFilmState({});
+    // this.props.updateForeignFilmState({});
 
     const dbRef = firebase.database().ref();
 
@@ -20,8 +31,17 @@ class CurrentPair extends Component {
       foreignFilm: this.props.foreignFilm
     });
 
-    // this.props.updateEnglishFilmState({});
-    // this.props.updateForeignFilmState({});
+    this.setState({ savePairActive: false });
+
+  }
+
+  componentDidMount() {
+
+    // Makes the Save Pair button clickable
+    this.setState({ savePairActive: true });
+
+    // Scrolls the Window to the CurrentPair component
+    this.props.scrollToCurrentPair();
 
   }
 
@@ -35,15 +55,18 @@ class CurrentPair extends Component {
     return (
       <Fragment>
 
-        <h3>Film Pairing</h3>
+        <h3 ref={this.props.CurrentPairRef}>Film Pairing</h3>
         <p>If you liked that film, you might like this one...</p>
         <FilmPair pair={pair}/>
-        <button onClick={() => {
-          // Saves pair in database
-          this.savePair();
-          // Scrolls to Pairs component
-          this.props.scrollToPairs();
-        }}>
+        <button 
+          onClick={() => {
+            // Saves pair in database
+            this.savePair();
+            // Scrolls to Pairs component
+            this.props.scrollToPairs();
+          }}
+          className={this.state.savePairActive ? 'save-pair active' : 'save-pair disabled'}
+        >
           Save Pair
         </button>
         <button onClick={() => {

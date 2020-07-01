@@ -22,6 +22,17 @@ class Search extends Component {
         display: false
       }
     };
+
+    this.englishFilmsRef = React.createRef();
+    this.foreignFilmsRef = React.createRef();
+  }
+
+  scrollToEnglishFilms = () => {
+    window.scrollTo(0, this.englishFilmsRef.current.offsetTop)
+  }
+
+  scrollToForeignFilms = () => {
+    window.scrollTo(0, this.foreignFilmsRef.current.offsetTop)
   }
 
   /**
@@ -81,6 +92,10 @@ class Search extends Component {
           englishFilms.push(film);
         }
       });
+
+      // Scrolls to the list of English films
+      this.scrollToEnglishFilms();
+
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
         this.setState({ hasError: true });
@@ -127,6 +142,9 @@ class Search extends Component {
     }
 
     this.setState({ foreignFilms, isLoading: false });
+
+    // Scrolls to list of foreign films
+    this.scrollToForeignFilms();
   };
 
   /**
@@ -149,50 +167,65 @@ class Search extends Component {
     return (
       <Fragment>
         {
-          this.state.modal.display &&
-          <Modal
+          this.state.modal.display
+          && <Modal
             film={this.state.modal.film}
             closeFilmModal={this.closeFilmModal}
             selectFilm={this.state.modal.isForeign ? this.selectForeignFilm : this.selectEnglishFilm}
           />
         }
+        { this.state.isLoading && <LoadingPage /> }
         <form onSubmit={this.handleSubmit} ref={this.props.SearchRef}>
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
-        <section className='english-films'>
-          <h2>Results for "{this.state.userTextInput}"</h2>
+        <section className='films' ref={this.englishFilmsRef}>
+          {
+            this.state.foreignFilms.length
+            ? <h2>If you liked {this.props.englishFilm.title}, then maybe you'll like...</h2>
+            : this.state.englishFilms.length
+            ? <h2>Did you mean...</h2>
+            : null
+          }
           <ul className='grid-container'>
             {
-              this.state.englishFilms.map( object => {
+              this.state.foreignFilms.length
+              ? this.state.foreignFilms.map( film => {
                 return (
-                  <li key={object.id}>
-                    <button type='button' onClick={() => this.displayFilmModal(object)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                  <li key={film.id}>
+                    <button type='button' onClick={() => this.displayFilmModal(film, true)}><img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} /></button>
                   </li>
-                )
+                );
+              })
+              : this.state.englishFilms.map( film => {
+                return (
+                  <li key={film.id}>
+                    <button type='button' onClick={() => this.displayFilmModal(film)}><img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} /></button>
+                  </li>
+                );
               })
             }
           </ul>
         </section>
         {
-          this.state.isLoading ?
-          <LoadingPage /> :
-          <section className='foreign-films'>
-            <h2>Foreign film recommendations based on your English film selection:</h2>
-            <ul className='grid-container'>
-              {
-                this.state.foreignFilms.map( object => {
-                  return (
-                    <li key={object.id}>
-                      <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
-                    </li>
-                  )
-                })
-              }
-            </ul>
-          </section>
+          this.state.isLoading
+          ? <LoadingPage />
+          : <section className='foreign-films' ref={this.foreignFilmsRef}>
+              <h2>Foreign film recommendations based on your English film selection:</h2>
+              <ul className='grid-container'>
+                {
+                  this.state.foreignFilms.map( object => {
+                    return (
+                      <li key={object.id}>
+                        <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </section>
         }
-        { this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> }
+        {this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
       </Fragment>
     );
   }

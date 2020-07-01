@@ -1,16 +1,59 @@
+@import './fontsAndColours.scss';
+@import './global.scss';
+
 footer {
   display: flex;
-  color: black;
-}
+  justify-content: center;
+  align-items: center;
+  font-family: $primary-font;
+  color: white;
+  background: black;
+  height: 30vh;
+  
+  a {
+    color: white;
+  }
 
-footer section {
-  flex: 1 1 auto;
-}
+  section {
+    flex: 1 1 auto;
+    padding: 0 20px;
+  }
 
-footer .attributions a {
-  text-decoration: underline;
-}
+  .attributions {
+    text-align: center;
+  }
 
-footer .team-members {
-  display: flex;
-}
+  .attributions a {
+    text-decoration: underline;
+  }
+
+  .team-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-info p {
+    font-size: 2rem;
+  }
+
+  .team-info .team-name {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .team-members {
+    display: flex;
+
+  }
+
+  .team-member {
+    padding: 0 10px;
+  }
+
+  .team-social {
+    display: flex;
+    justify-content: space-around;
+  }
+
+} 
