@@ -200,7 +200,7 @@ class Search extends Component {
             }
           </ul>
         </section>
-  
+        
         {this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
       </Fragment>
     );
