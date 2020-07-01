@@ -18,7 +18,7 @@ input[type=submit] {
   margin-left: 10px;
 }
 
-.englishFilms h2, .foreignFilms h2 {
+.films h2 {
   padding: 15px;
 }
 
@@ -28,7 +28,7 @@ $tabletLandscapeBreakpoint: 1050px;
 $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
 
-section.english-films, section.foreign-films {
+section.films {
   padding: 3vw;
 }
 
