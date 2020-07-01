@@ -11,7 +11,7 @@ class Modal extends Component {
       <div className='overlay'>
         <div className='modal'>
           <div>
-            <img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Movie poster for ${film.title}`} />
+            <img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} />
           </div>
           <div className='modal-info'>
             <button className='close' type='button' onClick={closeFilmModal}><FontAwesomeIcon icon={faTimesCircle} /></button>
