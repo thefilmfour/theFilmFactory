@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import '../styles/FilmPair.scss';
 
 
@@ -16,7 +17,11 @@ class FilmPair extends Component {
           <div className="pair-info">
             <h3>{englishFilm.title}</h3>
             <p className="date">{englishFilm.release_date.slice(0, 4)}</p>
-            <p><i class="fas fa-star"></i> {englishFilm.vote_average}/10</p>
+            <p>
+              {/* <FontAwesomeIcon
+                icon={faStar}
+              /> */}
+              {englishFilm.vote_average}/10</p>
             <p>{englishFilm.overview}</p>
           </div>
           <div className="pair-poster">

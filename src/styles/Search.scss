@@ -1,3 +1,27 @@
+// Melissa's form styles
+form {
+  text-align: center;
+  padding-top: 80px;
+}
+
+input[type=text], input[type=submit] {
+  padding: 15px;
+  border-radius: 5px;
+}
+
+input[type=text] {
+  width: 30%;
+}
+
+input[type=submit] {
+  width: 12%;
+  margin-left: 10px;
+}
+
+.englishFilms h2, .foreignFilms h2 {
+  padding: 15px;
+}
+
 // All of this has been moved from Robert's App.scss
 
 $tabletLandscapeBreakpoint: 1050px;
@@ -20,7 +44,6 @@ ul.gridContainer {
     cursor: pointer;
 
     img {
-      border: 2px solid transparent;
       width: 100%;
       height: 100%;
 
