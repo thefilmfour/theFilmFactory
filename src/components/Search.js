@@ -191,14 +191,23 @@ class Search extends Component {
               ? this.state.foreignFilms.map( film => {
                 return (
                   <li key={film.id}>
-                    <button type='button' onClick={() => this.displayFilmModal(film, true)}><img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} /></button>
+                    <button
+                      className="shadow"
+                       type="button"
+                      onClick={() => this.displayFilmModal(film, true)}
+                    >
+                      <img
+                        src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`}
+                        alt={`Poster for the movie ${film.title}`}
+                      />
+                    </button>
                   </li>
                 );
               })
               : this.state.englishFilms.map( film => {
                 return (
                   <li key={film.id}>
-                    <button type='button' onClick={() => this.displayFilmModal(film)}><img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} /></button>
+                    <button className="shadow" type='button' onClick={() => this.displayFilmModal(film)}><img src={`http://image.tmdb.org/t/p/w500/${film.poster_path}`} alt={`Poster for the movie ${film.title}`} /></button>
                   </li>
                 );
               })
