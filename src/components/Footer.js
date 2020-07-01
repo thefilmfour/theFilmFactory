@@ -75,7 +75,7 @@ class Footer extends Component {
                   </a>
                 </li>
                 <li>
-                  <a href='#' title="Click to access Robert's Twitter page" target='_blank'>
+                  <a href='https://twitter.com/robert_duhig' title="Click to access Robert's Twitter page" target='_blank'>
                     <FontAwesomeIcon
                       icon={faTwitter}
                     />
