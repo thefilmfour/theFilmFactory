@@ -15,7 +15,7 @@ class CurrentPair extends Component {
   /**
    * Adds a film pair object to the database
    * Connected to an event listener on the Save Pair button
-   */
+  */
   savePair = () => {
 
     // These lines will remove CurrentPair
@@ -46,7 +46,6 @@ class CurrentPair extends Component {
   }
 
   render() {
-
     // Creates a pair object, which is the necessary format for the FilmPair component to receive
     const pair = {
       englishFilm: this.props.englishFilm,
@@ -81,9 +80,7 @@ class CurrentPair extends Component {
 
       </Fragment>
     )
-
   }
-
 }
 
 export default CurrentPair;

@@ -1,10 +1,34 @@
+// Melissa's form styles
+form {
+  text-align: center;
+  padding-top: 80px;
+}
+
+input[type=text], input[type=submit] {
+  padding: 15px;
+  border-radius: 5px;
+}
+
+input[type=text] {
+  width: 30%;
+}
+
+input[type=submit] {
+  width: 12%;
+  margin-left: 10px;
+}
+
+.films h2 {
+  padding: 15px;
+}
+
 // All of this has been moved from Robert's App.scss
 
 $tabletLandscapeBreakpoint: 1050px;
 $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
 
-section.english-films, section.foreign-films {
+section.films {
   padding: 3vw;
 }
 

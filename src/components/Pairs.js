@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import '../styles/Pairs.scss';
 import firebase from '../firebase';
 import FilmPair from './FilmPair';
@@ -10,10 +9,10 @@ class Pairs extends Component {
   constructor() {
     super();
     this.state = {
-      filmPairs: [],
+      filmPairs: []
     };
   }
-  
+
   componentDidMount() {
     // create a variable to store a reference to our database
     const dbRef = firebase.database().ref();
@@ -55,5 +54,3 @@ class Pairs extends Component {
 }
 
 export default Pairs;
-
-

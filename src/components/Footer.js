@@ -13,7 +13,6 @@ import '../styles/Footer.scss';
 class Footer extends Component {
 
   render() {
-
     return (
       <footer>
 
@@ -108,9 +107,7 @@ class Footer extends Component {
         
       </footer>
     )
-
   }
-
 }
 
 export default Footer;
