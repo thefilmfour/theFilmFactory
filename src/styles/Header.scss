@@ -4,7 +4,19 @@ header {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100vh;
+}
+
+.welcome {
+  position: relative;
+  top: 140px;
+  text-align: center;
+  p {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+  }
 }
 
 h1 {
@@ -12,8 +24,5 @@ h1 {
   font-size: 150px;
   text-transform: uppercase;
   letter-spacing: -20px;
-  text-align: center;
   color: white;
-  position: relative;
-  top: 205px;
 }

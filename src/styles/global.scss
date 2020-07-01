@@ -13,6 +13,12 @@ html {
 
 body {
     font-size: 1.6rem;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+main {
+    background: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,3 +46,11 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+// main {
+//     background-image: url(../assets/main-image.png);
+//     background-size: cover;
+//     background-position: fixed;
+//     background-repeat: no-repeat;
+//     height: 100vh;
+// }
