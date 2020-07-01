@@ -11,7 +11,7 @@ class FilmPair extends Component {
     return (
       <ul className='pair'>
         <li className="film-flex">
-          <div className='pair-info'>
+          <div className='pair-info english'>
             <h3>{englishFilm.title}</h3>
             <p className="date">{englishFilm.release_date.slice(0, 4)}</p>
             <p>
