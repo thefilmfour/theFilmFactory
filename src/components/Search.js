@@ -174,10 +174,10 @@ class Search extends Component {
         </form>
 
         {/* section to display the English films */}
-        <section className='englishFilms'>
+        <section className='english-films'>
             {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
-          <ul className='gridContainer'>
+          <ul className='grid-container'>
             {
               this.state.englishFilms.map( object => {
                 return (
@@ -191,9 +191,9 @@ class Search extends Component {
         </section>
 
         {/* section to display the foreign films */}
-        <section className='foreignFilms'>
+        <section className='foreign-films'>
           <h2>Foreign film recommendations based on your English film selection:</h2>
-          <ul className='gridContainer'>
+          <ul className='grid-container'>
             {
               this.state.foreignFilms.map( object => {
                 return (

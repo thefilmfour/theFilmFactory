@@ -4,11 +4,11 @@ $tabletLandscapeBreakpoint: 1050px;
 $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
 
-section.englishFilms, section.foreignFilms {
+section.english-films, section.foreign-films {
   padding: 3vw;
 }
 
-ul.gridContainer {
+ul.grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2vw;
