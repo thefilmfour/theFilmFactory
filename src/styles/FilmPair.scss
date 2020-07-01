@@ -10,10 +10,20 @@ ul, li, p {
 
 .pair h3 {
   font-size: 30px;
+  color: #ECC79C;
 }
 
 .pair p {
   padding-top: 10px;
+  color: #C7B2D3;
+}
+
+.pair p:nth-child(2) {
+  color: #ECC79C;
+}
+
+.pair p:nth-child(4) {
+  color: #DBF0EF;
 }
 
 .film-flex {
@@ -23,8 +33,17 @@ ul, li, p {
 }
 
 .pair-info {
-  margin: 15px;
+  margin-left: 1vw;
 }
+
+ul:nth-child(odd) {
+  background-color: #191919;
+  padding: 2vw;
+}
+
+.pair-info.english  {
+  margin-right: 1vw;
+} 
 
 .pair-info, .pair-poster {
   width: 50%;
