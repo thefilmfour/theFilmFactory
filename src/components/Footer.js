@@ -16,6 +16,8 @@ class Footer extends Component {
 
     return (
       <footer>
+
+        
         <section className='attributions'>
           <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
           <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a></p>
@@ -23,7 +25,7 @@ class Footer extends Component {
 
         <section className='team-info'>
 
-          <p>Made with <span aria-label='love'>♥</span> by The Film Four</p>
+          <p>Made with <span aria-label='love'>♥</span> by <span className="team-name">The Film Four</span></p>
           <ul className='team-members'>
             <ul className='team-member'>
               <li>Cheriele</li>
@@ -103,6 +105,7 @@ class Footer extends Component {
             </ul>
           </ul>
         </section>
+        
       </footer>
     )
 

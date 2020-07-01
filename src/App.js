@@ -64,7 +64,7 @@ class App extends Component {
 
           <div className="wrapper">
             
-          <Search 
+          {/* <Search 
             updateEnglishFilmState={this.updateEnglishFilmState} 
             updateForeignFilmState={this.updateForeignFilmState} 
             SearchRef={this.SearchRef}
@@ -85,7 +85,7 @@ class App extends Component {
           }
           <Pairs 
             PairsRef={this.PairsRef} 
-          />
+          /> */}
             
           </div>
 

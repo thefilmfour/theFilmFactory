@@ -1,5 +1,6 @@
 // GOOGLE FONT
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Lato&display=swap');
+@import './fontsAndColours.scss';
 
 * {
     margin: 0;
@@ -13,6 +14,7 @@ html {
 
 body {
     font-size: 1.6rem;
+    font-family: $sans-serif-font;
 }
 
 h1, h2, h3, h4, h5, h6 {
