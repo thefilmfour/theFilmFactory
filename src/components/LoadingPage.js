@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/errorMessage.scss';
+import filmReel from '../assets/film-reel.svg'
 
 /**
  * Returns the HTML for the loading page
@@ -7,7 +8,10 @@ import '../styles/errorMessage.scss';
 const LoadingPage = () => {
   return (
     <div className='loadingPage'>
-      <p>Searching database...</p>
+      <div className='mainContent'>
+        <img src={filmReel} />
+        <p>Searching database...</p>
+      </div>
     </div>
   )
 }

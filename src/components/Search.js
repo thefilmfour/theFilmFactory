@@ -97,7 +97,7 @@ class Search extends Component {
       }
     });
 
-    this.setState({ englishFilms, isLoading: false });
+    this.setState({ userTextInput: '', englishFilms, isLoading: false });
   };
   
   /**
