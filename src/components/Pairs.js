@@ -59,8 +59,8 @@ class Pairs extends Component {
       // 3. Set State with changed copy
       this.setState({ filmPairs: newState });
     });
-  }
 
+  }
 
   render() {
     return (

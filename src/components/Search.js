@@ -185,8 +185,6 @@ class Search extends Component {
     // function from App.js to update the foreignFilm state
     this.props.updateForeignFilmState(foreignFilm);
 
-    // Scrolls to CurrentPair component
-    this.props.scrollToCurrentPair();
   }
 
   updateHasErrorState = () => {

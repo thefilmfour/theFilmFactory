@@ -16,56 +16,91 @@ class Footer extends Component {
 
     return (
       <footer>
-        <section className="attributions">
-          <p>All films provided by <a href="https://www.themoviedb.org/documentation/api">The Movie DB API</a></p>
-          <p>All icons provided by <a href="https://fontawesome.com/license">Font Awesome</a></p>
+        <section className='attributions'>
+          <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
+          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a></p>
         </section>
 
-        <section className="team-info">
+        <section className='team-info'>
 
-          <p>Made with <span aria-label="love">♥</span> by The Film Four</p>
-          <ul className="team-members">
-            <ul className="team-member">
+          <p>Made with <span aria-label='love'>♥</span> by The Film Four</p>
+          <ul className='team-members'>
+            <ul className='team-member'>
               <li>Cheriele</li>
-              <li>
-                <a href="https://github.com/csmordido" title="Click to access Cheriele's Github page" target="_blank">
-                  <FontAwesomeIcon 
-                    icon={faGithub}
-                  />
-                </a>
-              </li>
+              <ul className='team-social'>  
+                <li>
+                  <a href='https://github.com/csmordido' title="Click to access Cheriele's Github page" target='_blank'>
+                    <FontAwesomeIcon 
+                      icon={faGithub}
+                      />
+                  </a>
+                </li>
+                <li>
+                  <a href='https://twitter.com/eyel_mordido' title="Click to access Cheriele's Twitter page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                    />
+                  </a>
+                </li>
+              </ul>
             </ul>
-            <ul>
+            <ul className='team-member'>
               <li>Melissa</li>
-              <li>
-                <a href="https://github.com/mel-ahls" title="Click to access Melissa's Github page" target="_blank">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                  />
-                </a>
-              </li>
+              <ul className='team-social'>
+                <li>
+                  <a href='https://github.com/mel-ahls' title="Click to access Melissa's Github page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      />
+                  </a>
+                </li>
+                <li>
+                  <a href='https://twitter.com/mel_ahls' title="Click to access Melissa's Twitter page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                    />
+                  </a>
+                </li>
+              </ul>
             </ul>
-            <ul>
+            <ul className='team-member'>
               <li>Robert</li>
-              <li>
-                <a href="https://github.com/rduhig" title="Click to access Robert's Github page" target="_blank">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                  />
-                </a>
-              </li>
+              <ul className='team-social'>
+                <li>
+                  <a href='https://github.com/rduhig' title="Click to access Robert's Github page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      />
+                  </a>
+                </li>
+                <li>
+                  <a href='#' title="Click to access Robert's Twitter page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                    />
+                  </a>
+                </li>
+              </ul>
             </ul>
-            <ul>
+            <ul className='team-member'>
               <li>Taylor</li>
-              <li>
-                <a href="https://github.com/QuercusTaliare" title="Click to access Taylor's Github page" target="_blank">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                  />
-                </a>
-              </li>
+              <ul className='team-social'>
+                <li>
+                  <a href='https://github.com/QuercusTaliare' title="Click to access Taylor's Github page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faGithub}
+                      />
+                  </a>
+                </li>
+                <li>
+                  <a href='https://twitter.com/taylorRdev' title="Click to access Taylor's Twitter page" target='_blank'>
+                    <FontAwesomeIcon
+                      icon={faTwitter}
+                    />
+                  </a>
+                </li>
+              </ul>
             </ul>
-            
           </ul>
         </section>
       </footer>

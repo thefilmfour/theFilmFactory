@@ -1,5 +1,11 @@
+@import './fontsAndColours.scss';
+
 footer {
   display: flex;
+  font-family: $sans-serif-font;
+  color: white;
+  background: black;
+  
 }
 
 footer section {
@@ -11,5 +17,9 @@ footer .attributions a {
 }
 
 footer .team-members {
+  display: flex;
+}
+
+footer .team-social {
   display: flex;
 }
