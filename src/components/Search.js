@@ -22,6 +22,17 @@ class Search extends Component {
         display: false
       }
     };
+
+    this.englishFilmsRef = React.createRef();
+    this.foreignFilmsRef = React.createRef();
+  }
+
+  scrollToEnglishFilms = () => {
+    window.scrollTo(0, this.englishFilmsRef.current.offsetTop)
+  }
+
+  scrollToForeignFilms = () => {
+    window.scrollTo(0, this.foreignFilmsRef.current.offsetTop)
   }
 
   /**
@@ -81,6 +92,10 @@ class Search extends Component {
           englishFilms.push(film);
         }
       });
+
+      // Scrolls to the list of English films
+      this.scrollToEnglishFilms();
+
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
         this.setState({ hasError: true });
@@ -127,6 +142,9 @@ class Search extends Component {
     }
 
     this.setState({ foreignFilms, isLoading: false });
+
+    // Scrolls to list of foreign films
+    this.scrollToForeignFilms();
   };
 
   /**
@@ -161,7 +179,7 @@ class Search extends Component {
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
-        <section className='films'>
+        <section className='films' ref={this.englishFilmsRef}>
           {
             this.state.foreignFilms.length
             ? <h2>If you liked {this.props.englishFilm.title}, then maybe you'll like...</h2>
@@ -189,7 +207,25 @@ class Search extends Component {
             }
           </ul>
         </section>
-        { this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
+        {
+          this.state.isLoading
+          ? <LoadingPage />
+          : <section className='foreign-films' ref={this.foreignFilmsRef}>
+              <h2>Foreign film recommendations based on your English film selection:</h2>
+              <ul className='grid-container'>
+                {
+                  this.state.foreignFilms.map( object => {
+                    return (
+                      <li key={object.id}>
+                        <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                      </li>
+                    )
+                  })
+                }
+              </ul>
+            </section>
+        }
+        {this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
       </Fragment>
     );
   }
