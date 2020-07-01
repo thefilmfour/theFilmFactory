@@ -33,7 +33,7 @@ class CurrentPair extends Component {
     return (
       <Fragment>
 
-        <h3>Film Pairing</h3>
+        <h3 ref={this.props.CurrentPairRef}>Film Pairing</h3>
         <p>If you liked that film, you might like this one...</p>
         <FilmPair pair={pair}/>
         <button onClick={() => {

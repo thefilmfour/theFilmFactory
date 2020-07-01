@@ -22,6 +22,17 @@ class Search extends Component {
         display: false
       }
     };
+
+    this.englishFilmsRef = React.createRef();
+    this.foreignFilmsRef = React.createRef();
+  }
+
+  scrollToEnglishFilms = () => {
+    window.scrollTo(0, this.englishFilmsRef.current.offsetTop)
+  }
+
+  scrollToForeignFilms = () => {
+    window.scrollTo(0, this.foreignFilmsRef.current.offsetTop)
   }
 
   // function to display the film details modal
@@ -86,6 +97,10 @@ class Search extends Component {
       this.setState({
         englishFilms,
       });
+
+      // Scrolls to the list of English films
+      this.scrollToEnglishFilms();
+
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
         this.setState({
@@ -135,6 +150,9 @@ class Search extends Component {
             foreignFilms.push(object);
           }
         });
+
+        
+
       }).catch( error => {
         if (error && !this.state.foreignFilms.length) {
           this.setState({
@@ -150,6 +168,9 @@ class Search extends Component {
       foreignFilms,
       isLoading: false
     });
+
+    // Scrolls to list of foreign films
+    this.scrollToForeignFilms();
   }
 
   // function to execute on foreign film selection
@@ -163,6 +184,9 @@ class Search extends Component {
     
     // function from App.js to update the foreignFilm state
     this.props.updateForeignFilmState(foreignFilm);
+
+    // Scrolls to CurrentPair component
+    this.props.scrollToCurrentPair();
   }
 
   updateHasErrorState = () => {
@@ -189,7 +213,7 @@ class Search extends Component {
         </form>
 
         {/* section to display the English films */}
-        <section className='english-films'>
+        <section className='english-films' ref={this.englishFilmsRef}>
             {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
           <ul className='grid-container'>
@@ -207,7 +231,7 @@ class Search extends Component {
         {
           this.state.isLoading
           ? <LoadingPage />
-          : <section className='foreign-films'>
+          : <section className='foreign-films' ref={this.foreignFilmsRef}>
               <h2>Foreign film recommendations based on your English film selection:</h2>
               <ul className='grid-container'>
                 {
