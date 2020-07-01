@@ -143,8 +143,6 @@ class Search extends Component {
 
     this.setState({ foreignFilms, isLoading: false });
 
-    // Scrolls to list of foreign films
-    this.scrollToForeignFilms();
   };
 
   /**
@@ -207,24 +205,7 @@ class Search extends Component {
             }
           </ul>
         </section>
-        {
-          this.state.isLoading
-          ? <LoadingPage />
-          : <section className='foreign-films' ref={this.foreignFilmsRef}>
-              <h2>Foreign film recommendations based on your English film selection:</h2>
-              <ul className='grid-container'>
-                {
-                  this.state.foreignFilms.map( object => {
-                    return (
-                      <li key={object.id}>
-                        <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </section>
-        }
+        
         {this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
       </Fragment>
     );
