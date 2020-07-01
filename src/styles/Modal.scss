@@ -30,11 +30,7 @@ div.modal {
     padding: 3vw;
 }
 
-div.modalImage {
-
-}
-
-div.modalInfo {
+div.modal-info {
   button.close {
     background: none;
     border: none;
@@ -45,6 +41,19 @@ div.modalInfo {
 
     &:hover, &:active, &:focus {
       color: white;
+    }
+  }
+
+  button.select {
+    background-color: black;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 15px;
+    margin-top: 10px;
+
+    &:hover, &:active, &:focus {
+      border-color: white;
     }
   }
 
