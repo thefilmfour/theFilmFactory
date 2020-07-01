@@ -63,6 +63,8 @@ footer {
   .team-name {
     text-align: center;
     padding: 5px 0;
+    position: relative;
+    z-index: 2;
   }
 
   .team-social {
