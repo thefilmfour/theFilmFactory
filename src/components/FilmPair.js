@@ -9,9 +9,9 @@ class FilmPair extends Component {
     const {englishFilm, foreignFilm} = this.props.pair
 
     return (
-      <ul className="pair">
+      <ul className='pair'>
         <li className="film-flex">
-          <div className="pair-info">
+          <div className='pair-info'>
             <h3>{englishFilm.title}</h3>
             <p className="date">{englishFilm.release_date.slice(0, 4)}</p>
             <p>
@@ -21,7 +21,7 @@ class FilmPair extends Component {
               {englishFilm.vote_average}/10</p>
             <p>{englishFilm.overview}</p>
           </div>
-          <div className="pair-poster">
+          <div className='pair-poster'>
             <img
               src={`http://image.tmdb.org/t/p/w500/${englishFilm.poster_path}`}
               alt={`Movie poster for ${englishFilm.title}`}
@@ -33,10 +33,10 @@ class FilmPair extends Component {
           <div className="pair-info">
             <h3>{foreignFilm.title}</h3>
             <p className="date">{foreignFilm.release_date.slice(0, 4)}</p>
-            <p><i class="fas fa-star"></i> {foreignFilm.vote_average}/10</p>
+            <p><i className='fas fa-star'></i> {foreignFilm.vote_average}/10</p>
             <p>{foreignFilm.overview}</p>
           </div>
-          <div className="pair-poster">
+          <div className='pair-poster'>
             <img
               src={`http://image.tmdb.org/t/p/w500/${foreignFilm.poster_path}`}
               alt={`Movie poster for ${foreignFilm.title}`}

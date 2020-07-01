@@ -18,7 +18,7 @@ class Modal extends Component {
             <h3>{film.title}</h3>
             { film.title !== film.original_title && <h4>{film.original_title}</h4> }
             <p className="date">{film.release_date.slice(0, 4)}</p>
-            <p><i class="fas fa-star"></i> {film.vote_average}/10</p>
+            <p><i className='fas fa-star'></i> {film.vote_average}/10</p>
             <p>{film.overview}</p>
             <button className='select' type='button' onClick={selectFilm}>Select this movie</button>
           </div>

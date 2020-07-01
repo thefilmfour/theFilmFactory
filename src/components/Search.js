@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 import LoadingPage from './LoadingPage';
-import '../styles/Search.scss';
 import Modal from './Modal';
+import '../styles/Search.scss';
 
 class Search extends Component {
 
@@ -28,7 +28,7 @@ class Search extends Component {
    * Displays a modal containing information about the selected film
    * 
    * @param {Object} film The selected film Object
-   * @param {Boolean} isForeign True if the selected film is foreign, false otherwise
+   * @param {boolean} isForeign True if the selected film is foreign, false otherwise
    */
   displayFilmModal = (film, isForeign = false) => {
     this.setState({
@@ -38,18 +38,14 @@ class Search extends Component {
         display: true
       }
     });
-  }
+  };
 
   /**
    * Closes the film information modal
    */
   closeFilmModal = () => {
-    this.setState({
-      modal: {
-        display: false
-      }
-    });
-  }
+    this.setState({ modal: { display: false } });
+  };
 
   /**
    * Sets the state to contain the user text input
@@ -57,24 +53,21 @@ class Search extends Component {
    * @param {Event} event The Event occurring when the text input changes
    */
   handleChange = (event) => {
-    const searchedMovie = event.target.value;
-    this.setState({
-      userTextInput: searchedMovie,
-    });
-  }
+    const searchQuery = event.target.value;
+    this.setState({ userTextInput: searchQuery });
+  };
 
   /**
    * Queries the API for movies similar to the English language movie the user entered
    * 
    * @param {Event} event The Event occurring when the user submits their search query
    */
-  handleSubmit = (event) => {
-    this.setState({
-      foreignFilms: [],
-    });
-    
+  handleSubmit = async (event) => {
     event.preventDefault();
-    axios({
+    this.setState({ foreignFilms: [], isLoading: true });
+    let englishFilms = [];
+
+    await axios({
       url: 'https://api.themoviedb.org/3/search/movie',
       params: {
         api_key: '7e436244a51ab62563e1dbbb6bb31f24',
@@ -83,32 +76,19 @@ class Search extends Component {
         include_adult: false,
       }
     }).then( response => {
-
-      let newEnglishFilms = [];
-
-      // push each film data object to the newEnglishFilms array
-      response.data.results.forEach(obj => {
-        newEnglishFilms.push(obj);
-      });
-
-      // filter newEnglishFilms array for english language films that have a poster and store it in the englishFilms variable
-      let filteredEnglishFilms = newEnglishFilms.filter(object => object.original_language = 'en').filter(object => object.poster_path);
-
-      // grab only the first ten films and store it in the englishFilms variable
-      let englishFilms = filteredEnglishFilms.slice(0, 10);
-      
-      // update the englishFilms state to have the 10 filtered film data objects
-      this.setState({
-        englishFilms,
+      response.data.results.forEach( film => {
+        if (film.original_language === 'en' && film.poster_path && englishFilms.length < 10) {
+          englishFilms.push(film);
+        }
       });
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
-        this.setState({
-          hasError: true,
-        });
+        this.setState({ hasError: true });
       }
     });
-  }
+
+    this.setState({ englishFilms, isLoading: false });
+  };
   
   /**
    * Updates the state to contain the selected English language film and queries the API
@@ -116,84 +96,54 @@ class Search extends Component {
    */
   selectEnglishFilm = async () => {
     this.closeFilmModal();
-    this.setState({
-      isLoading: true,
-    });
-    const movieId = this.state.modal.film.id;
-    const englishFilmsCopy = [...this.state.englishFilms];
-
-    // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
-    const englishFilm = englishFilmsCopy.find( object => object.id === parseInt(movieId));
-
-    // function from App.js to update the englishFilm state
+    this.setState({ isLoading: true });
+    const englishFilm = this.state.modal.film;
+    const filmId = this.state.modal.film.id;
     this.props.updateEnglishFilmState(englishFilm);
     // Error handling: If user selects an English Film, then selects a Foreign Film, and then re-selects an English film, this will make sure the CurrentPair is not rendering until another ForeignFilm has been selected (CurrentPair won't render until both englishFilm and foreignFilm are populated in App's state)
     this.props.updateForeignFilmState({});
-
     let foreignFilms = [];
 
     for (let i = 0; i <= this.state.totalPages && foreignFilms.length < 20; i++) {
-      // second axios call
       await axios({
-        url: `https://api.themoviedb.org/3/movie/${movieId}/similar`,
+        url: `https://api.themoviedb.org/3/movie/${filmId}/similar`,
         params: {
           api_key: '7e436244a51ab62563e1dbbb6bb31f24',
-          page: i + 1,
+          page: i + 1
         }
       }).then( response => {
-        const totalPages = response.data.total_pages;
-
-        this.setState({
-          totalPages,
-        });
-
-        // push the data objects for each film to the similarFilms array
-        response.data.results.forEach( object => {
-          if (object.original_language !== 'en' && object.poster_path && !foreignFilms.some( film => film.id === object.id) && foreignFilms.length < 20) {
-            foreignFilms.push(object);
+        response.data.results.forEach( film => {
+          if (film.original_language !== 'en' && film.poster_path && !foreignFilms.some( obj => obj.id === film.id) && foreignFilms.length < 20) {
+            foreignFilms.push(film);
           }
         });
+        const totalPages = response.data.total_pages;
+        this.setState({ totalPages });
       }).catch( error => {
         if (error && !this.state.foreignFilms.length) {
-          this.setState({
-            hasError: true,
-            totalPages: '0',
-          });
+          this.setState({ hasError: true, totalPages: 0 });
         }
       });
     }
 
-    // update the foreignFilms state with the filtered array
-    this.setState({
-      foreignFilms,
-      isLoading: false
-    });
-  }
+    this.setState({ foreignFilms, isLoading: false });
+  };
 
   /**
    * Updates the state to contain the selected foreign language film
    */
   selectForeignFilm = () => {
     this.closeFilmModal();
-    const movieId = this.state.modal.film.id;
-    const foreignFilmsCopy = [...this.state.foreignFilms];
-
-    // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
-    const foreignFilm = foreignFilmsCopy.find( object => object.id === parseInt(movieId));
-    
-    // function from App.js to update the foreignFilm state
+    const foreignFilm = this.state.modal.film;
     this.props.updateForeignFilmState(foreignFilm);
-  }
+  };
 
   /**
    * Updates the state when there are no current errors
    */
   updateHasErrorState = () => {
-    this.setState({
-      hasError: false,
-      totalPages: 0
-    });
-  }
+    this.setState({ hasError: false, totalPages: 0 });
+  };
 
   render() {
     return (
@@ -210,10 +160,7 @@ class Search extends Component {
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
-
-        {/* section to display the English films */}
         <section className='english-films'>
-            {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
           <ul className='grid-container'>
             {
@@ -245,9 +192,9 @@ class Search extends Component {
             </ul>
           </section>
         }
-        {this.state.hasError ? <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> : null}
+        { this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> }
       </Fragment>
-    )
+    );
   }
 }
 
