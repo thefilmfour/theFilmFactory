@@ -3,12 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 import '../styles/FilmPair.scss';
 
-
 class FilmPair extends Component {
-
   
   render() {
-
     const {englishFilm, foreignFilm} = this.props.pair
 
     return (
@@ -47,7 +44,7 @@ class FilmPair extends Component {
           </div>
         </li>
       </ul>
-    );
+    )
   }
 }
 

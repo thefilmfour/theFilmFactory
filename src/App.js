@@ -15,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       englishFilm: {},
-      foreignFilm: {},
+      foreignFilm: {}
     }
 
     this.SearchRef = React.createRef();
@@ -23,26 +23,38 @@ class App extends Component {
 
   }
 
-  // function passed as props to the Search component to update the englishFilm state
-  updateEnglishFilmState = (data) => {
+  /**
+   * Updates the state to contain the selected English language film
+   * 
+   * @param {Object} filmObj An Object representing the selected film
+   */
+  updateEnglishFilmState = (filmObj) => {
     this.setState({
-      englishFilm: data,
+      englishFilm: filmObj
     });
   }
 
-  // function passed as props to the Search component to update the foreignFilm state
-  updateForeignFilmState = (data) => {
+  /**
+   * Updates the state to contain the selected foreign language film
+   * 
+   * @param {Object} filmObj An Object representing the selected film
+   */
+  updateForeignFilmState = (filmObj) => {
     this.setState({
-      foreignFilm: data,
+      foreignFilm: filmObj
     });
   }
 
-  // Scroll to Search component
+  /**
+   * Scrolls the Window to the Search component
+   */
   scrollToSearch = () => {
     window.scrollTo(0, this.SearchRef.current.offsetTop)
   }
 
-  // Scroll to Pairs component
+  /**
+   * Scrolls the Window to the Pairs component
+   */
   scrollToPairs = () => {
     window.scrollTo(0, this.PairsRef.current.offsetTop)
   }
@@ -83,7 +95,6 @@ class App extends Component {
       </Fragment>
     );
   }
-  
 }
 
 export default App;

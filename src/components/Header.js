@@ -4,7 +4,6 @@ import '../styles/Header.scss';
 class Header extends Component {
 
   render() {
-
     return (
       <header>
         <div className="welcome">
@@ -16,9 +15,7 @@ class Header extends Component {
         </div>
       </header>
     );
-
   }
-
 }
 
 export default Header;
