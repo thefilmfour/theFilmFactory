@@ -3,6 +3,7 @@ import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 import LoadingPage from './LoadingPage';
 import '../styles/Search.scss';
+import Modal from './Modal';
 
 class Search extends Component {
 
@@ -15,7 +16,32 @@ class Search extends Component {
       totalPages: 0,
       isLoading: '',
       hasError: false,
-    }
+      modal: {
+        film: {},
+        isForeign: false,
+        display: false
+      }
+    };
+  }
+
+  // function to display the film details modal
+  displayFilmModal = (film, isForeign = false) => {
+    this.setState({
+      modal: {
+        film: film,
+        isForeign: isForeign,
+        display: true
+      }
+    });
+  }
+
+  // function to close the film details modal
+  closeFilmModal = () => {
+    this.setState({
+      modal: {
+        display: false
+      }
+    });
   }
 
   // function tracking the user's input
@@ -68,15 +94,14 @@ class Search extends Component {
       }
     });
   }
-
+  
   // function to execute on click of english film poster
-  onEnglishFilmClick = async (event) => {
+  selectEnglishFilm = async () => {
+    this.closeFilmModal();
     this.setState({
       isLoading: true,
     });
-
-    const movieId = event.currentTarget.value;
-
+    const movieId = this.state.modal.film.id;
     const englishFilmsCopy = [...this.state.englishFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the englishFilm variable
@@ -123,16 +148,14 @@ class Search extends Component {
     // update the foreignFilms state with the filtered array
     this.setState({
       foreignFilms,
-      isLoading: false,
+      isLoading: false
     });
   }
 
   // function to execute on foreign film selection
-  onForeignFilmClick = (event) => {
-
-    // store the movie id in a variable
-    const movieId = event.currentTarget.value;
-
+  selectForeignFilm = () => {
+    this.closeFilmModal();
+    const movieId = this.state.modal.film.id;
     const foreignFilmsCopy = [...this.state.foreignFilms];
 
     // goes through the array to find the object holding the selected movie's id and store it in the foreignFilm variable
@@ -145,27 +168,36 @@ class Search extends Component {
   updateHasErrorState = () => {
     this.setState({
       hasError: false,
-      totalPages: 0,
+      totalPages: 0
     });
   }
 
   render() {
     return (
       <Fragment>
+        {
+          this.state.modal.display &&
+          <Modal
+            film={this.state.modal.film}
+            closeFilmModal={this.closeFilmModal}
+            selectFilm={this.state.modal.isForeign ? this.selectForeignFilm : this.selectEnglishFilm}
+          />
+        }
         <form onSubmit={this.handleSubmit} ref={this.props.SearchRef}>
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
 
         {/* section to display the English films */}
-        <section className='englishFilms'>
+        <section className='english-films'>
+            {/* <img src={`http://image.tmdb.org/t/p/w500/${this.props.img}`} alt=""/> */}
           <h2>Results for "{this.state.userTextInput}"</h2>
-          <ul className='gridContainer'>
+          <ul className='grid-container'>
             {
               this.state.englishFilms.map( object => {
                 return (
                   <li key={object.id}>
-                    <button type='button' value={object.id} onClick={this.onEnglishFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    <button type='button' onClick={() => this.displayFilmModal(object)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                   </li>
                 )
               })
@@ -175,14 +207,14 @@ class Search extends Component {
         {
           this.state.isLoading
           ? <LoadingPage />
-          : <section className='foreignFilms'>
+          : <section className='foreign-films'>
               <h2>Foreign film recommendations based on your English film selection:</h2>
-              <ul className='gridContainer'>
+              <ul className='grid-container'>
                 {
                   this.state.foreignFilms.map( object => {
                     return (
                       <li key={object.id}>
-                        <button type='button' value={object.id} onClick={this.onForeignFilmClick}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                        <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
                       </li>
                     )
                   })
@@ -190,7 +222,6 @@ class Search extends Component {
               </ul>
             </section>
         }
-
         {this.state.hasError ? <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> : null}
       </Fragment>
     )

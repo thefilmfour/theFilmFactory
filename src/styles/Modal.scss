@@ -1,0 +1,63 @@
+h3 {
+  font-size: 30px;
+}
+
+h4 {
+  font-style: italic;
+}
+
+div.overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+div.modal {
+    background-color: grey;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2vw;
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    padding: 3vw;
+}
+
+div.modal-info {
+  button.close {
+    background: none;
+    border: none;
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    &:hover, &:active, &:focus {
+      color: white;
+    }
+  }
+
+  button.select {
+    background-color: black;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 15px;
+    margin-top: 10px;
+
+    &:hover, &:active, &:focus {
+      border-color: white;
+    }
+  }
+
+  p {
+    padding-top: 10px;
+  }
+}
