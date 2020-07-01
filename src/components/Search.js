@@ -24,7 +24,12 @@ class Search extends Component {
     };
   }
 
-  // function to display the film details modal
+  /**
+   * Displays a modal containing information about the selected film
+   * 
+   * @param {Object} film The selected film Object
+   * @param {Boolean} isForeign True if the selected film is foreign, false otherwise
+   */
   displayFilmModal = (film, isForeign = false) => {
     this.setState({
       modal: {
@@ -35,7 +40,9 @@ class Search extends Component {
     });
   }
 
-  // function to close the film details modal
+  /**
+   * Closes the film information modal
+   */
   closeFilmModal = () => {
     this.setState({
       modal: {
@@ -44,7 +51,11 @@ class Search extends Component {
     });
   }
 
-  // function tracking the user's input
+  /**
+   * Sets the state to contain the user text input
+   * 
+   * @param {Event} event The Event occurring when the text input changes
+   */
   handleChange = (event) => {
     const searchedMovie = event.target.value;
     this.setState({
@@ -52,7 +63,11 @@ class Search extends Component {
     });
   }
 
-  // function to execute on form submit
+  /**
+   * Queries the API for movies similar to the English language movie the user entered
+   * 
+   * @param {Event} event The Event occurring when the user submits their search query
+   */
   handleSubmit = (event) => {
     this.setState({
       foreignFilms: [],
@@ -95,7 +110,10 @@ class Search extends Component {
     });
   }
   
-  // function to execute on click of english film poster
+  /**
+   * Updates the state to contain the selected English language film and queries the API
+   * for similar foreign language films
+   */
   selectEnglishFilm = async () => {
     this.closeFilmModal();
     this.setState({
@@ -152,7 +170,9 @@ class Search extends Component {
     });
   }
 
-  // function to execute on foreign film selection
+  /**
+   * Updates the state to contain the selected foreign language film
+   */
   selectForeignFilm = () => {
     this.closeFilmModal();
     const movieId = this.state.modal.film.id;
@@ -165,6 +185,9 @@ class Search extends Component {
     this.props.updateForeignFilmState(foreignFilm);
   }
 
+  /**
+   * Updates the state when there are no current errors
+   */
   updateHasErrorState = () => {
     this.setState({
       hasError: false,
@@ -205,22 +228,22 @@ class Search extends Component {
           </ul>
         </section>
         {
-          this.state.isLoading
-          ? <LoadingPage />
-          : <section className='foreign-films'>
-              <h2>Foreign film recommendations based on your English film selection:</h2>
-              <ul className='grid-container'>
-                {
-                  this.state.foreignFilms.map( object => {
-                    return (
-                      <li key={object.id}>
-                        <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </section>
+          this.state.isLoading ?
+          <LoadingPage /> :
+          <section className='foreign-films'>
+            <h2>Foreign film recommendations based on your English film selection:</h2>
+            <ul className='grid-container'>
+              {
+                this.state.foreignFilms.map( object => {
+                  return (
+                    <li key={object.id}>
+                      <button type='button' onClick={() => this.displayFilmModal(object, true)}><img src={`http://image.tmdb.org/t/p/w500/${object.poster_path}`} alt={object.original_title}/></button>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </section>
         }
         {this.state.hasError ? <ErrorMessage updateHasErrorState={this.updateHasErrorState}/> : null}
       </Fragment>

@@ -10,7 +10,7 @@ class Pairs extends Component {
   constructor() {
     super();
     this.state = {
-      filmPairs: [],
+      filmPairs: []
     };
   }
 
@@ -33,8 +33,6 @@ class Pairs extends Component {
   //     dbRef.push(filmPair);
   //   });
   // };
-
-
 
   componentDidMount() {
     // create a variable to store a reference to our database
@@ -61,7 +59,6 @@ class Pairs extends Component {
     });
   }
 
-
   render() {
     return (
       <section ref={this.props.PairsRef}>
@@ -79,5 +76,3 @@ class Pairs extends Component {
 }
 
 export default Pairs;
-
-
