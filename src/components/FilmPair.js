@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-
 import '../styles/FilmPair.scss';
 
-
 class FilmPair extends Component {
-
   
   render() {
-
     const {englishFilm, foreignFilm} = this.props.pair
 
     return (
@@ -42,7 +38,7 @@ class FilmPair extends Component {
           </div>
         </li>
       </ul>
-    );
+    )
   }
 }
 

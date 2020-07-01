@@ -7,6 +7,9 @@ class CurrentPair extends Component {
 
   // SAVE PAIR FUNCTION - Adds film pair to database
   // Event Listener connected to Save Pair button
+  /**
+   * Pushes the selected film pair to Firebase
+   */
   savePair = () => {
 
     const dbRef = firebase.database().ref();
@@ -23,7 +26,6 @@ class CurrentPair extends Component {
   }
 
   render() {
-
     // Creates a pair object, which is the necessary format for the FilmPair component to receive
     const pair = {
       englishFilm: this.props.englishFilm,
@@ -55,9 +57,7 @@ class CurrentPair extends Component {
 
       </Fragment>
     )
-
   }
-
 }
 
 export default CurrentPair;

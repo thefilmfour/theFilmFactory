@@ -13,7 +13,6 @@ import '../styles/Footer.scss';
 class Footer extends Component {
 
   render() {
-
     return (
       <footer>
         <section className="attributions">
@@ -70,9 +69,7 @@ class Footer extends Component {
         </section>
       </footer>
     )
-
   }
-
 }
 
 export default Footer;
