@@ -7,7 +7,7 @@ class Header extends Component {
 
     return (
       <header>
-        <h1>The Film Factory</h1>
+        <h1>The Film<br /> Factory</h1>
       </header>
     )
 

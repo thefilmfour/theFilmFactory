@@ -1,0 +1,19 @@
+
+header {
+  background-image: url(../assets/header-image.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+h1 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 150px;
+  text-transform: uppercase;
+  letter-spacing: -20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  top: 205px;
+}

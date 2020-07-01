@@ -1,0 +1,41 @@
+ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+.pair {
+  display: flex;
+  margin: 100px 0px;
+}
+
+.pair h3 {
+  font-size: 30px;
+}
+
+.pair p {
+  padding-top: 10px;
+}
+
+.film-flex {
+  width: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.pair-info {
+  margin: 15px;
+}
+
+.pair-info, .pair-poster {
+  width: 50%;
+}
+
+.date {
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.fa-star {
+  color: #fabc3c;
+}
+
