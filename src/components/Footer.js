@@ -4,20 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 import '../styles/Footer.scss';
 
-// Everyone will need to install these dependencies
-// npm i--save @fortawesome/fontawesome-svg-core
-// npm i--save @fortawesome/free-solid-svg-icons
-// npm i--save @fortawesome/react-fontawesome
-// npm i--save @fortawesome/free-brands-svg-icons
-
 class Footer extends Component {
 
   render() {
     return (
       <footer>
-
-        
-        
 
         <section className='team-info'>
 

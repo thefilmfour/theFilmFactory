@@ -1,7 +1,6 @@
 @import './fontsAndColours.scss';
 @import './global.scss';
 
-$tabletLandscapeBreakpoint: 1050px;
 $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
 
@@ -113,8 +112,6 @@ footer {
     flex-direction: column;
     height: auto;
 
-    
-
     .team-social {
       justify-content: center;
     }
@@ -123,10 +120,7 @@ footer {
       text-align: center;
     }
 
-    
-
   }
-
 
 }
 
@@ -142,8 +136,6 @@ footer {
       flex: 1 1 calc(50% - 20px);
     }
 
-
   }
-
 
 }
