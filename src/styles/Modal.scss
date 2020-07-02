@@ -1,5 +1,10 @@
 @import './fontsAndColours.scss';
 
+div.container {
+  position: relative;
+  z-index: 1;
+}
+
 div.overlay {
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
