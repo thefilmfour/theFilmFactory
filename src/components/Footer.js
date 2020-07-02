@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // https://github.com/FortAwesome/react-fontawesome
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
-import '../styles/Footer.scss';
+// import '../styles/Footer.scss';
 
 // Everyone will need to install these dependencies
 // npm i--save @fortawesome/fontawesome-svg-core

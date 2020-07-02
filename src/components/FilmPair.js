@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
-import '../styles/FilmPair.scss';
+// import '../styles/FilmPair.scss';
 
 class FilmPair extends Component {
   
