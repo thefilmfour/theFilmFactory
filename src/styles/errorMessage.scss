@@ -1,6 +1,7 @@
+@import './fontsAndColours.scss';
 
 /////// shared styles ///////
-.errorMessage, .loadingPage {
+.error-message, .loading-page {
   font-size: 2.3rem;
   line-height: 1.2;
   position: fixed;
@@ -13,42 +14,42 @@
   width: 100%;
 }
 
-.mainContent {
+.main-content {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: relative;
 }
 
-//////// errorMessage styles ////////
-.errorMessage {
-  background-color: rgba(0, 0, 0, 0.3);
+//////// error-message styles ////////
+.error-message {
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.errorMessage .mainContent {
-  background-color: grey;
-  border-radius: 10px;
+.error-message .main-content {
+  background-color: #0C090A;
+  border: 2px solid $light-blue;
   position: relative;
   width: 90%;
   max-width: 600px;
   padding: 10vw 3vw;
 }
 
-.errorMessage button {
+.error-message button {
   all: unset;
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
   font-size: 3rem;
-  color: black;
-  &:hover, &:focus {
+  color: $light-blue;
+  &:hover, &:active, &:focus {
     color: white;
   }
 }
 
-///////// LoadingPage styles /////////
-.mainContent img {
+///////// Loading-page styles /////////
+.main-content img {
   width: 75px;
   height: 75px;
   margin: 0 auto 20px auto;

@@ -7,8 +7,8 @@ import filmReel from '../assets/film-reel.svg'
  */
 const LoadingPage = () => {
   return (
-    <div className='loadingPage'>
-      <div className='mainContent'>
+    <div className='loading-page'>
+      <div className='main-content'>
         <img src={filmReel} />
         <p>Searching database...</p>
       </div>
