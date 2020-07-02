@@ -1,61 +1,107 @@
 @import './fontsAndColours.scss';
+@import './global.scss';
 
-ul, li, p {
-  margin: 0;
-  padding: 0;
-}
+main {
 
-.pair {
-  display: flex;
-  margin: 100px 0px;
-}
+  .pair-block {
+    padding: 2vw 0;
 
-.pair p {
-  padding-top: 10px;
-  color: $purple;
-}
+    &:nth-child(odd) {
+      background-color: #0C090A;
+    }
+  }
 
-.pair p:nth-child(2) {
-  color: $tan;
-}
+  ul, li, p {
+    margin: 0;
+    padding: 0;
+  }
 
-.pair p:nth-child(4) {
-  color: $light-blue;
-}
+  .pair {
+    display: flex;
+  }
 
-.film-flex {
-  width: calc(50% - 1vw);
-  display: flex;
-  flex-direction: row-reverse;
-  margin-right: 1vw;
+  .film-flex {
+    width: calc(50% - 1vw);
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 1vw;
+    
+    &:last-child {
+      margin-right: 0;
+      margin-left: 1vw;
+    }
+  }
 
-  &:last-child {
-    margin-right: 0;
+  .pair-info, .pair-poster {
+    width: 50%;
+  }
+
+  .pair-info {
     margin-left: 1vw;
   }
-}
 
-.pair-info {
-  margin-left: 1vw;
-}
+  .pair-info p {
+    padding-top: 10px;
+  }
 
-.pair-block {
-  padding: 2vw 0;
+  .date {
+    font-weight: bold;
+    padding-top: 5px;
+    color: $tan;
+  }
+
+  .rating {
+    color: $purple; 
+  }
+
+  .overview {
+    color: $light-blue;
+  }
+
+  // MEDIA QUERY
+  @media all and (max-width: $tabletLandscapeBreakpoint) {
+    .film-flex {
+      // width: 100%;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .pair-info, .pair-poster {
+      width: 80%;
+    }
+
+
+    .pair-poster {
+      padding-bottom: 15px;
+    }
 
   &:nth-child(odd) {
     background-color: #191919;
   }
-}
 
-.pair-info.english  {
-  // margin-right: 1vw;
-} 
+  @media all and (max-width: $mobileBreakpoint) {
+    .pair-block {
+      margin: 30px 0px;
+      padding: 30px 0;
+    }
 
-.pair-info, .pair-poster {
-  width: 50%;
-}
+    .pair {
+      flex-direction: column;
+      text-align: center;
+    }
 
-.date {
-  font-weight: bold;
-  padding-top: 5px;
+    .pair-info, .pair-poster {
+      width: 90%;
+    }
+
+    .pair-info {
+      padding-bottom: 40px;
+    }
+
+    .film-flex {
+      width: 100%;
+    }
+  }
+
 }
