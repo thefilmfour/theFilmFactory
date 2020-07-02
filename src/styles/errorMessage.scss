@@ -1,3 +1,4 @@
+@import './fontsAndColours.scss';
 
 /////// shared styles ///////
 .errorMessage, .loadingPage {
@@ -22,12 +23,12 @@
 
 //////// errorMessage styles ////////
 .errorMessage {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .errorMessage .mainContent {
-  background-color: grey;
-  border-radius: 10px;
+  background-color: #0C090A;
+  border: 2px solid $light-blue;
   position: relative;
   width: 90%;
   max-width: 600px;
@@ -41,8 +42,8 @@
   right: 20px;
   cursor: pointer;
   font-size: 3rem;
-  color: black;
-  &:hover, &:focus {
+  color: $light-blue;
+  &:hover, &:active, &:focus {
     color: white;
   }
 }
