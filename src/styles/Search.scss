@@ -1,6 +1,17 @@
 @import './fontsAndColours.scss';
 
-// Melissa's form styles
+$tabletLandscapeBreakpoint: 1050px;
+$tabletBreakpoint: 800px;
+$mobileBreakpoint: 450px;
+
+section.films {
+  padding: 3vw 0;
+
+  h3 {
+    padding: 15px;
+  }
+}
+
 form {
   text-align: center;
   padding-top: 80px;
@@ -22,36 +33,12 @@ input[type=submit] {
   margin-left: 10px;
 }
 
-.films h3 {
-  padding: 15px 15px 15px 0;
-}
-
-.shadow {
-  transition: all .2s ease-in-out;
-}
-
-.shadow:hover {
-  box-shadow: 0px 2px 25px 2px $tan;
-  transform: scale(1.02);
-}
-
-// All of this has been moved from Robert's App.scss
-
-$tabletLandscapeBreakpoint: 1050px;
-$tabletBreakpoint: 800px;
-$mobileBreakpoint: 450px;
-
-section.films {
-  padding: 3vw 0;
-}
-
 ul.grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2vw;
 
   li {
-    // border: 2px solid transparent;
     width: calc((min(100vw, 1200px) - 12vw) / 5);
     height: calc((min(100vw, 1200px) - 12vw) / 5 * 1.5);
   }
@@ -62,7 +49,6 @@ ul.grid-container {
     height: 100%;
 
     &:hover, &:active, &:focus {
-      // transform: scale(1.05);
       border-color: $light-blue;
     }
   }
