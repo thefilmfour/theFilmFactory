@@ -177,7 +177,7 @@ class Search extends Component {
             this.state.foreignFilms.length
             ? <h3>If you liked <span>{this.props.englishFilm.title}</span>, then maybe you'll like...</h3>
             : this.state.englishFilms.length
-            ? <h3>Did you mean...</h3>
+            ? <h2>Did you mean...</h2>
             : null
           }
           <ul className='grid-container'>

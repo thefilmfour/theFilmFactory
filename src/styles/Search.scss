@@ -8,8 +8,9 @@ $mobileBreakpoint: 450px;
 section.films {
   padding: 3vw 0;
 
-  h3 {
-    padding: 15px 15px 15px 0;
+  h2 {
+    padding: 25px 15px 15px 0;
+    text-transform: none;
   }
 }
 
@@ -66,30 +67,53 @@ ul.grid-container {
     height: 100%;
   }
 
-  @media all and (max-width: $tabletLandscapeBreakpoint) {
-    grid-template-columns: repeat(4, 1fr);
+}
 
-    li {
-      width: calc((100vw - 10vw) / 4);
-      height: calc((100vw - 10vw) / 4 * 1.5);
+  @media all and (max-width: $tabletLandscapeBreakpoint) {
+    ul.grid-container {
+      grid-template-columns: repeat(4, 1fr);
+      li {
+        width: calc((100vw - 10vw) / 4);
+        height: calc((100vw - 10vw) / 4 * 1.5);
+      }
     }
+
   }
 
   @media all and (max-width: $tabletBreakpoint) {
-    grid-template-columns: repeat(3, 1fr);
-
-    li {
-      width: calc((100vw - 8vw) / 3);
-      height: calc((100vw - 8vw) / 3 * 1.5);
+    ul.grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      li {
+        width: calc((100vw - 8vw) / 3);
+        height: calc((100vw - 8vw) / 3 * 1.5);
+      }
     }
+
   }
 
   @media all and (max-width: $mobileBreakpoint) {
-    grid-template-columns: repeat(2, 1fr);
-
-    li {
-      width: calc((100vw - 6vw) / 2);
-      height: calc((100vw - 6vw) / 2 * 1.5);
+    ul.grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      li {
+        width: calc((100vw - 6vw) / 2);
+        height: calc((100vw - 6vw) / 2 * 1.5);
+      }
     }
+ 
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    input[type=submit] {
+      margin-top: 15px;
+      margin-bottom: 80px;
+    }
+    
+    input[type=text] {
+        width: 90%;
+    }
+
   }
-}

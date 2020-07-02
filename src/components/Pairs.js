@@ -43,7 +43,7 @@ class Pairs extends Component {
     return (
       <section className='pairs' ref={this.props.PairsRef}>
         <div className='wrapper'>
-          <h3>Movies To Watch</h3>
+          <h2>Movies To Watch</h2>
         </div>
         <ul>
           {this.state.filmPairs.map((filmPair) => {

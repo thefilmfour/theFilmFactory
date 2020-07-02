@@ -7,7 +7,7 @@ main {
     padding: 2vw 0;
 
     &:nth-child(odd) {
-      background-color: #0C090A;
+      background-color: #1B1A1B;
     }
   }
 
@@ -92,29 +92,26 @@ main {
 
     main {
 
+      .pair-block {
+        padding: 30px 0;
+      }
 
-    
-    .pair-block {
-      margin: 30px 0px;
-      padding: 30px 0;
-    }
+      .pair {
+        flex-direction: column;
+        text-align: center;
+      }
 
-    .pair {
-      flex-direction: column;
-      text-align: center;
-    }
+      .pair-info, .pair-poster {
+        width: 90%;
+      }
 
-    .pair-info, .pair-poster {
-      width: 90%;
-    }
+      .pair-info {
+        padding-bottom: 40px;
+      }
 
-    .pair-info {
-      padding-bottom: 40px;
-    }
-
-    .film-flex {
-      width: 100%;
-    }
+      .film-flex {
+        width: 100%;
+      }
 
     }
   }
