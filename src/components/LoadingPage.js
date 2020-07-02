@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/errorMessage.scss';
+// import '../styles/errorMessage.scss';
 import filmReel from '../assets/film-reel.svg'
 
 /**
