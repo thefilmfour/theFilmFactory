@@ -1,6 +1,9 @@
 @import './fontsAndColours.scss';
 @import './global.scss';
 
+$tabletBreakpoint: 800px;
+$mobileBreakpoint: 450px;
+
 footer {
   display: flex;
   justify-content: center;
@@ -16,30 +19,33 @@ footer {
 
   section {
     flex: 1 1 auto;
-    padding: 0 20px;
+    padding: 3vw;
   }
 
-  .attributions {
-    text-align: center;
-  }
-
-  .attributions a {
-    text-decoration: underline;
-  }
+  
 
   .team-info {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
 
   .team-info p {
     font-size: 2rem;
+    text-align: center;
   }
 
-  .team-info .team-name {
-    font-family: 'Josefin Sans', sans-serif;
+  .team-info .heart {
+    color: red;
+    font-size: 2.5rem;
+  }
+
+  .team-info .team-group {
+    font-family: $secondary-font;
     text-transform: uppercase;
+    color: $tan;
+    white-space: nowrap;
   }
 
   .team-members {
@@ -48,12 +54,88 @@ footer {
   }
 
   .team-member {
+    flex: 1 1 25%;
     padding: 0 10px;
+    margin: 10px 0;
+  }
+
+  .team-name {
+    text-align: center;
+    padding: 5px 0;
+    position: relative;
+    z-index: 2;
   }
 
   .team-social {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin: 10px 0;
+  }
+
+  .team-social a {
+    font-size: 2.5rem;
+    padding: 10px;
+    color: $light-blue;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $tan;
+    }
+  }
+
+  .attributions {
+    text-align: right;
+  }
+
+  .attributions p {
+    margin: 10px 0;
+  }
+
+  .attributions a {
+    text-decoration: underline;
+    color: $purple;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $tan;
+    }
+
   }
 
 } 
+
+@media all and (max-width: $tabletBreakpoint) {
+
+  footer {
+    flex-direction: column;
+    height: auto;
+
+    .team-social {
+      justify-content: center;
+    }
+
+    .attributions {
+      text-align: center;
+    }
+
+  }
+
+}
+
+@media all and (max-width: $mobileBreakpoint) {
+
+  footer {
+
+    .team-members {
+      flex-wrap: wrap;
+    }
+
+    .team-member {
+      flex: 1 1 calc(50% - 20px);
+    }
+
+  }
+
+}

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 import LoadingPage from './LoadingPage';
@@ -23,11 +23,11 @@ class Search extends Component {
       }
     };
 
-    this.englishFilmsRef = React.createRef();
+    this.filmsRef = React.createRef();
   }
 
-  scrollToEnglishFilms = () => {
-    window.scrollTo(0, this.englishFilmsRef.current.offsetTop)
+  scrollToFilms = () => {
+    window.scrollTo(0, this.filmsRef.current.offsetTop)
   }
 
   /**
@@ -89,7 +89,7 @@ class Search extends Component {
       });
 
       // Scrolls to the list of English films
-      this.scrollToEnglishFilms();
+      this.scrollToFilms();
 
     }).catch( error => {
       if (error && !this.state.englishFilms.length) {
@@ -98,6 +98,7 @@ class Search extends Component {
     });
 
     this.setState({ userTextInput: '', englishFilms, isLoading: false });
+
   };
   
   /**
@@ -135,9 +136,7 @@ class Search extends Component {
         }
       });
     }
-
-    this.setState({ foreignFilms, isLoading: false });
-
+    this.setState({ foreignFilms, englishFilms: [], isLoading: false });
   };
 
   /**
@@ -147,6 +146,7 @@ class Search extends Component {
     this.closeFilmModal();
     const foreignFilm = this.state.modal.film;
     this.props.updateForeignFilmState(foreignFilm);
+    this.setState({ foreignFilms: [] })
   };
 
   /**
@@ -158,7 +158,7 @@ class Search extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div className='wrapper'>
         {
           this.state.modal.display
           && <Modal
@@ -172,12 +172,12 @@ class Search extends Component {
           <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
           <input type='submit' value='Search' />
         </form>
-        <section className='films' ref={this.englishFilmsRef}>
+        <section className='films' ref={this.filmsRef}>
           {
             this.state.foreignFilms.length
-            ? <h2>If you liked {this.props.englishFilm.title}, then maybe you'll like...</h2>
+            ? <h3>If you liked <span>{this.props.englishFilm.title}</span>, then maybe you'll like...</h3>
             : this.state.englishFilms.length
-            ? <h2>Did you mean...</h2>
+            ? <h3>Did you mean...</h3>
             : null
           }
           <ul className='grid-container'>
@@ -209,9 +209,8 @@ class Search extends Component {
             }
           </ul>
         </section>
-        
-        {this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
-      </Fragment>
+        { this.state.hasError && <ErrorMessage updateHasErrorState={this.updateHasErrorState} /> }
+      </div>
     );
   }
 }
