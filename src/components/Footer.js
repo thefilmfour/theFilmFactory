@@ -9,6 +9,11 @@ class Footer extends Component {
   render() {
     return (
       <footer>
+        
+        <section className='attributions'>
+          <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
+          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a> and <a href="http://www.freepik.com/" title="Freepik">Freepik</a></p>
+        </section>
 
         <section className='team-info'>
 

@@ -22,6 +22,7 @@ class Search extends Component {
         display: false
       }
     };
+
     this.filmsRef = React.createRef();
   }
 
@@ -95,7 +96,9 @@ class Search extends Component {
         this.setState({ hasError: true });
       }
     });
-    this.setState({ englishFilms, isLoading: false });
+
+    this.setState({ userTextInput: '', englishFilms, isLoading: false });
+
   };
   
   /**

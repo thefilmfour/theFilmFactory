@@ -12,9 +12,11 @@ import '../styles/errorMessage.scss';
 const ErrorMessage = ({updateHasErrorState}) => {
   return (
     <div className='errorMessage'>
-      <p>Something went wrong,</p>
-      <p>please try again.</p>
-      <button type='button' onClick={updateHasErrorState}><FontAwesomeIcon icon={faTimesCircle}/></button>
+      <div className='mainContent'>
+        <p>Something went wrong,</p>
+        <p>please try again.</p>
+        <button type='button' onClick={updateHasErrorState}><FontAwesomeIcon icon={faTimesCircle}/></button>
+      </div>
     </div>
   )
 }
