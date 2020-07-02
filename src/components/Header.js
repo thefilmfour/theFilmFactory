@@ -11,7 +11,7 @@ class Header extends Component {
             The Film
             <br /> Factory
           </h1>
-          <button className='scroll' type='button' onClick={this.props.scrollToSearch}>Find Your Movie Match</button>
+          <button className='scroll shadow' type='button' onClick={this.props.scrollToSearch}>Find Your Movie Match</button>
         </div>
       </header>
     );
