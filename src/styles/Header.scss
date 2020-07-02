@@ -1,7 +1,9 @@
-@import './fontsAndColours.scss';
+// @import './fontsAndColours.scss';
+// @import './global.scss';
+
 
 header {
-  background-image: url(../assets/header-image.png);
+  background-image: url(./assets/header-image.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

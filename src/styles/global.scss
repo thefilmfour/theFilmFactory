@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Lato&display=swap');
 @import './fontsAndColours.scss';
 
+
 * {
   margin: 0;
   padding: 0;
@@ -73,3 +74,7 @@ a {
 .fa-star {
   color: #fabc3c;
 }
+
+$tabletLandscapeBreakpoint: 1050px;
+$tabletBreakpoint: 800px;
+$mobileBreakpoint: 450px;

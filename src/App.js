@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import './styles/setup.scss';
-import './styles/global.scss';
-import './styles/fontsAndColours.scss';
+// import './styles/setup.scss';
+// import './styles/global.scss';
+// import './styles/fontsAndColours.scss';
+
 
 import Header from './components/Header';
 import Search from './components/Search';

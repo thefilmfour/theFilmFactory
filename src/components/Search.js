@@ -3,7 +3,7 @@ import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 import LoadingPage from './LoadingPage';
 import Modal from './Modal';
-import '../styles/Search.scss';
+// import '../styles/Search.scss';
 
 class Search extends Component {
 

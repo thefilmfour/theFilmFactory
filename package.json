@@ -20,6 +20,7 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "scss": "node-sass --watch src/styles/styles.scss src/style.css",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

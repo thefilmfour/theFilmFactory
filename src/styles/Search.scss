@@ -1,4 +1,5 @@
-@import './fontsAndColours.scss';
+// @import './fontsAndColours.scss';
+// @import './global.scss';
 
 // Melissa's form styles
 form {
@@ -37,9 +38,9 @@ input[type=submit] {
 
 // All of this has been moved from Robert's App.scss
 
-$tabletLandscapeBreakpoint: 1050px;
-$tabletBreakpoint: 800px;
-$mobileBreakpoint: 450px;
+// $tabletLandscapeBreakpoint: 1050px;
+// $tabletBreakpoint: 800px;
+// $mobileBreakpoint: 450px;
 
 section.films {
   padding: 3vw 0;

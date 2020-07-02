@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import '../styles/CurrentPair.scss';
+// import '../styles/CurrentPair.scss';
 import firebase from '../firebase';
 import FilmPair from './FilmPair';
 
