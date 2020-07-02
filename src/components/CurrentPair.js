@@ -63,9 +63,9 @@ class CurrentPair extends Component {
           <div className='film-pair-buttons'>
             <button
               onClick={() => { this.savePair(); this.props.scrollToPairs() }}
-              className={ this.state.savePairActive ? 'save-pair active' : 'save-pair disabled' }
+              className={ this.state.savePairActive ? 'save-pair active shadow' : 'save-pair disabled' }
             >Save Pair</button>
-            <button onClick={() => { this.props.scrollToSearch() }}>Search Again</button>
+            <button className='shadow' onClick={() => { this.props.scrollToSearch() }}>Search Again</button>
           </div>
         </div>
       </Fragment>
