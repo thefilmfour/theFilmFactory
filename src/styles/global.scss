@@ -1,6 +1,7 @@
 // GOOGLE FONT
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Lato&display=swap');
-@import './fontsAndColours.scss';
+// @import './fontsAndColours.scss';
+
 
 * {
   margin: 0;
@@ -73,7 +74,6 @@ a {
 .fa-star {
   color: #fabc3c;
 }
-
 
 // Media Query Variables
 $tabletLandscapeBreakpoint: 1050px;

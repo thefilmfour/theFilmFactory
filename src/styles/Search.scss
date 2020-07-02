@@ -1,9 +1,9 @@
-@import './fontsAndColours.scss';
-@import './global.scss';
+// @import './fontsAndColours.scss';
+// @import './global.scss';
 
-$tabletLandscapeBreakpoint: 1050px;
-$tabletBreakpoint: 800px;
-$mobileBreakpoint: 450px;
+// $tabletLandscapeBreakpoint: 1050px;
+// $tabletBreakpoint: 800px;
+// $mobileBreakpoint: 450px;
 
 section.films {
   padding: 3vw 0;
@@ -37,6 +37,21 @@ input[type=submit] {
 .films h3 {
   padding: 15px;
 }
+
+.shadow {
+  transition: all .2s ease-in-out;
+}
+
+.shadow:hover {
+  box-shadow: 0px 2px 25px 2px $tan;
+  transform: scale(1.02);
+}
+
+// All of this has been moved from Robert's App.scss
+
+// $tabletLandscapeBreakpoint: 1050px;
+// $tabletBreakpoint: 800px;
+// $mobileBreakpoint: 450px;
 
 section.films {
   padding: 3vw 0;
