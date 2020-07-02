@@ -71,9 +71,13 @@ main {
       width: 80%;
     }
 
+
     .pair-poster {
       padding-bottom: 15px;
     }
+
+  &:nth-child(odd) {
+    background-color: #191919;
   }
 
   @media all and (max-width: $mobileBreakpoint) {
