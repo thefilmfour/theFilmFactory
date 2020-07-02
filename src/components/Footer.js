@@ -9,28 +9,23 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        
-        <section className='attributions'>
-          <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
-          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a> and <a href="http://www.freepik.com/" title="Freepik">Freepik</a></p>
-        </section>
 
         <section className='team-info'>
 
           <p className="team-made">Made with <span className='heart' aria-label='love'>♥</span> by <span className='team-group'>The Film Four</span></p>
           <ul className='team-members'>
             <ul className='team-member'>
-              <li className='team-name'>Cheriele</li>
+              <li className='team-name'>Eyel</li>
               <ul className='team-social'>  
                 <li>
-                  <a href='https://github.com/csmordido' title="Click to access Cheriele's Github page" target='_blank'>
+                  <a href='https://github.com/csmordido' title="Click to access Eyel's Github page" target='_blank'>
                     <FontAwesomeIcon 
                       icon={faGithub}
                       />
                   </a>
                 </li>
                 <li>
-                  <a href='https://twitter.com/eyel_mordido' title="Click to access Cheriele's Twitter page" target='_blank'>
+                  <a href='https://twitter.com/eyel_mordido' title="Click to access Eyel's Twitter page" target='_blank'>
                     <FontAwesomeIcon
                       icon={faTwitter}
                     />
@@ -100,7 +95,7 @@ class Footer extends Component {
 
         <section className='attributions'>
           <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
-          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a></p>
+          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a> and <a href="http://www.freepik.com/" title="Freepik">Freepik</a></p>
         </section>
         
       </footer>

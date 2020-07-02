@@ -42,7 +42,7 @@ h2 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 3.7rem;
 }
   
 h4 {
@@ -75,6 +75,16 @@ a {
   color: #fabc3c;
 }
 
+// Media Query Variables
 $tabletLandscapeBreakpoint: 1050px;
 $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
+
+.shadow {
+  transition: all .2s ease-in-out;
+}
+  
+.shadow:hover {
+  box-shadow: 0px 2px 25px 2px $tan;
+  transform: scale(1.02);
+}
