@@ -1,3 +1,5 @@
+@import './fontsAndColours.scss';
+
 ul, li, p {
   margin: 0;
   padding: 0;
@@ -8,41 +10,45 @@ ul, li, p {
   margin: 100px 0px;
 }
 
-.pair h3 {
-  font-size: 30px;
-  color: #ECC79C;
-}
-
 .pair p {
   padding-top: 10px;
-  color: #C7B2D3;
+  color: $purple;
 }
 
 .pair p:nth-child(2) {
-  color: #ECC79C;
+  color: $tan;
 }
 
 .pair p:nth-child(4) {
-  color: #DBF0EF;
+  color: $light-blue;
 }
 
 .film-flex {
-  width: 50%;
+  width: calc(50% - 1vw);
   display: flex;
   flex-direction: row-reverse;
+  margin-right: 1vw;
+
+  &:last-child {
+    margin-right: 0;
+    margin-left: 1vw;
+  }
 }
 
 .pair-info {
   margin-left: 1vw;
 }
 
-ul:nth-child(odd) {
-  background-color: #191919;
-  padding: 2vw;
+.pair-block {
+  padding: 2vw 0;
+
+  &:nth-child(odd) {
+    background-color: #0C090A;
+  }
 }
 
 .pair-info.english  {
-  margin-right: 1vw;
+  // margin-right: 1vw;
 } 
 
 .pair-info, .pair-poster {
@@ -53,8 +59,3 @@ ul:nth-child(odd) {
   font-weight: bold;
   padding-top: 5px;
 }
-
-.fa-star {
-  color: #fabc3c;
-}
-

@@ -42,10 +42,12 @@ class Pairs extends Component {
   render() {
     return (
       <section ref={this.props.PairsRef}>
-        <h2>Movies To Watch</h2>
+        <div className='wrapper'>
+          <h3>Movies To Watch</h3>
+        </div>
         <ul>
           {this.state.filmPairs.map((filmPair) => {
-           return <FilmPair pair={filmPair.pair} key={filmPair.id}/>
+           return <FilmPair pair={filmPair.pair} key={filmPair.id} />
           })}
         </ul>
       </section>

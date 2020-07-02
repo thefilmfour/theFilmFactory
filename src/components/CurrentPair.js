@@ -54,32 +54,20 @@ class CurrentPair extends Component {
 
     return (
       <Fragment>
-
-        <h3 ref={this.props.CurrentPairRef}>Film Pairing</h3>
-        <p>If you liked that film, you might like this one...</p>
+        <div className='wrapper'>
+          <h3 ref={this.props.CurrentPairRef}>Film Pairing</h3>
+          <p>If you liked that film, you might like this one...</p>
+        </div>
         <FilmPair pair={pair}/>
-        <button 
-          onClick={() => {
-            // Saves pair in database
-            this.savePair();
-            // Scrolls to Pairs component
-            this.props.scrollToPairs();
-          }}
-          className={this.state.savePairActive ? 'save-pair active' : 'save-pair disabled'}
-        >
-          Save Pair
-        </button>
-        <button onClick={() => {
-
-          // Scrolls to Search component
-          this.props.scrollToSearch();
-
-        }}>
-          Search Again
-        </button>
-
+        <div className='wrapper'>
+          <button
+            onClick={() => { this.savePair(); this.props.scrollToPairs() }}
+            className={ this.state.savePairActive ? 'save-pair active' : 'save-pair disabled' }
+          >Save Pair</button>
+          <button onClick={() => { this.props.scrollToSearch() }}>Search Again</button>
+        </div>
       </Fragment>
-    )
+    );
   }
 }
 
