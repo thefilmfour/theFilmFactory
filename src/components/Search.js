@@ -169,8 +169,11 @@ class Search extends Component {
         }
         { this.state.isLoading && <LoadingPage /> }
         <form onSubmit={this.handleSubmit} ref={this.props.SearchRef}>
-          <input type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
-          <input type='submit' value='Search' />
+          <label htmlFor='search' className='sr-only'>Enter Movie</label>
+          <input id='search' type='text' value={this.state.userTextInput} onChange={this.handleChange} placeholder='Enter Movie' />
+
+          <label htmlFor='search-button' className='sr-only'>Search</label>
+          <input id='search-button' type='submit' value='Search' />
         </form>
         <section className='films' ref={this.filmsRef}>
           {
