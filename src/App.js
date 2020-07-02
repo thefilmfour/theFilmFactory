@@ -64,30 +64,28 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <Header />
+        <Header scrollToSearch={this.scrollToSearch} />
         <main>
-          <div className='wrapper'>
-            <Search
+          <Search
+            englishFilm={this.state.englishFilm}
+            updateEnglishFilmState={this.updateEnglishFilmState}
+            updateForeignFilmState={this.updateForeignFilmState}
+            SearchRef={this.SearchRef}
+          />
+          { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
+            (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
+            && <CurrentPair
               englishFilm={this.state.englishFilm}
+              foreignFilm={this.state.foreignFilm}
               updateEnglishFilmState={this.updateEnglishFilmState}
               updateForeignFilmState={this.updateForeignFilmState}
-              SearchRef={this.SearchRef}
+              scrollToPairs={this.scrollToPairs}
+              scrollToSearch={this.scrollToSearch}
+              CurrentPairRef={this.CurrentPairRef}
+              scrollToCurrentPair={this.scrollToCurrentPair}
             />
-            { // The CurrentPair component will not be rendered unless the englishFilm and foreignFilm objects in state have something inside
-              (Object.keys(this.state.englishFilm).length !== 0 && Object.keys(this.state.foreignFilm).length !== 0)
-              && <CurrentPair
-                englishFilm={this.state.englishFilm}
-                foreignFilm={this.state.foreignFilm}
-                updateEnglishFilmState={this.updateEnglishFilmState}
-                updateForeignFilmState={this.updateForeignFilmState}
-                scrollToPairs={this.scrollToPairs}
-                scrollToSearch={this.scrollToSearch}
-                CurrentPairRef={this.CurrentPairRef}
-                scrollToCurrentPair={this.scrollToCurrentPair}
-              />
-            }
-            <Pairs PairsRef={this.PairsRef} />
-          </div>
+          }
+          <Pairs PairsRef={this.PairsRef} />
         </main>
         <Footer />
       </Fragment>

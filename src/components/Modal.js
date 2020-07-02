@@ -15,7 +15,7 @@ class Modal extends Component {
           </div>
           <div className='modal-info'>
             <button className='close' type='button' onClick={closeFilmModal}><FontAwesomeIcon icon={faTimesCircle} /></button>
-            <h3>{film.title}</h3>
+            <h2>{film.title}</h2>
             { film.title !== film.original_title && <h4>{film.original_title}</h4> }
             <p className="date">{film.release_date.slice(0, 4)}</p>
             <p><FontAwesomeIcon icon={faStar} /> {film.vote_average}/10</p>

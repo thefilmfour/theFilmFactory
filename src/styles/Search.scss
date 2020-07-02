@@ -1,3 +1,5 @@
+@import './fontsAndColours.scss';
+
 // Melissa's form styles
 form {
   text-align: center;
@@ -10,26 +12,27 @@ input[type=text], input[type=submit] {
 }
 
 input[type=text] {
-  width: 30%;
-  border: 3px solid #C7B2D3;
+  width: calc(100% - 160px);
+  max-width: 300px;
+  border: 3px solid $purple;
 }
 
 input[type=submit] {
-  width: 12%;
+  width: 150px;
   margin-left: 10px;
 }
 
-.films h2 {
+.films h3 {
   padding: 15px;
 }
 
 .shadow {
   transition: all .2s ease-in-out;
-  }
+}
 
 .shadow:hover {
-  box-shadow: 0px 2px 25px 2px ( #ECC79C);
-    transform: scale(1.02);
+  box-shadow: 0px 2px 25px 2px $tan;
+  transform: scale(1.02);
 }
 
 // All of this has been moved from Robert's App.scss
@@ -39,7 +42,7 @@ $tabletBreakpoint: 800px;
 $mobileBreakpoint: 450px;
 
 section.films {
-  padding: 3vw;
+  padding: 3vw 0;
 }
 
 ul.grid-container {
@@ -49,8 +52,8 @@ ul.grid-container {
 
   li {
     // border: 2px solid transparent;
-    width: calc((min(90vw, 1200px) - 14vw) / 5);
-    height: calc((min(90vw, 1200px) - 14vw) / 5 * 1.5);
+    width: calc((min(100vw, 1200px) - 12vw) / 5);
+    height: calc((min(100vw, 1200px) - 12vw) / 5 * 1.5);
   }
 
   button {
@@ -60,7 +63,7 @@ ul.grid-container {
 
     &:hover, &:active, &:focus {
       // transform: scale(1.05);
-      border-color: skyblue;
+      border-color: $light-blue;
     }
   }
 
@@ -72,8 +75,8 @@ ul.grid-container {
     grid-template-columns: repeat(4, 1fr);
 
     li {
-      width: calc((90vw - 12vw) / 4);
-      height: calc((90vw - 12vw) / 4 * 1.5);
+      width: calc((100vw - 10vw) / 4);
+      height: calc((100vw - 10vw) / 4 * 1.5);
     }
   }
 
@@ -81,8 +84,8 @@ ul.grid-container {
     grid-template-columns: repeat(3, 1fr);
 
     li {
-      width: calc((90vw - 10vw) / 3);
-      height: calc((90vw - 10vw) / 3 * 1.5);
+      width: calc((100vw - 8vw) / 3);
+      height: calc((100vw - 8vw) / 3 * 1.5);
     }
   }
 
@@ -90,8 +93,8 @@ ul.grid-container {
     grid-template-columns: repeat(2, 1fr);
 
     li {
-      width: calc((90vw - 8vw) / 2);
-      height: calc((90vw - 8vw) / 2 * 1.5);
+      width: calc((100vw - 6vw) / 2);
+      height: calc((100vw - 6vw) / 2 * 1.5);
     }
   }
 }
