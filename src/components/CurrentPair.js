@@ -54,8 +54,8 @@ class CurrentPair extends Component {
 
     return (
       <Fragment>
-        <div className='wrapper'>
-          <h3 className='film-pair-header' ref={this.props.CurrentPairRef}>Film Pairing</h3>
+        <div className='wrapper film-pair-header'>
+          <h3 ref={this.props.CurrentPairRef}>Film Pairing</h3>
           <p>If you liked that film, you might like this one...</p>
         </div>
         <FilmPair pair={pair}/>
