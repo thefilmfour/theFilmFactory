@@ -428,45 +428,44 @@ button.select {
   pointer-events: none;
   opacity: 0.5; }
 
-ul, li, p {
+main ul, main li, main p {
   margin: 0;
   padding: 0; }
 
-.pair {
-  display: flex;
-  margin: 100px 0px; }
+main .pair {
+  display: flex; }
 
-.pair p {
+main .pair p {
   padding-top: 10px;
   color: #C7B2D3; }
 
-.pair p:nth-child(2) {
+main .pair p:nth-child(2) {
   color: #ECC79C; }
 
-.pair p:nth-child(4) {
+main .pair p:nth-child(4) {
   color: #DBF0EF; }
 
-.film-flex {
+main .film-flex {
   width: calc(50% - 1vw);
   display: flex;
   flex-direction: row-reverse;
   margin-right: 1vw; }
-  .film-flex:last-child {
+  main .film-flex:last-child {
     margin-right: 0;
     margin-left: 1vw; }
 
-.pair-info {
+main .pair-info {
   margin-left: 1vw; }
 
-.pair-block {
+main .pair-block {
   padding: 2vw 0; }
-  .pair-block:nth-child(odd) {
+  main .pair-block:nth-child(odd) {
     background-color: #0C090A; }
 
-.pair-info, .pair-poster {
+main .pair-info, main .pair-poster {
   width: 50%; }
 
-.date {
+main .date {
   font-weight: bold;
   padding-top: 5px; }
 

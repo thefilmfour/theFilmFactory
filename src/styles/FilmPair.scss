@@ -1,62 +1,66 @@
 // @import './fontsAndColours.scss';
 
+main {
 
-ul, li, p {
-  margin: 0;
-  padding: 0;
-}
 
-.pair {
-  display: flex;
-  margin: 100px 0px;
-}
+  ul, li, p {
+    margin: 0;
+    padding: 0;
+  }
 
-.pair p {
-  padding-top: 10px;
-  color: $purple;
-}
+  .pair {
+    display: flex;
+    // margin: 100px 0px;
+  }
 
-.pair p:nth-child(2) {
-  color: $tan;
-}
+  .pair p {
+    padding-top: 10px;
+    color: $purple;
+  }
 
-.pair p:nth-child(4) {
-  color: $light-blue;
-}
+  .pair p:nth-child(2) {
+    color: $tan;
+  }
 
-.film-flex {
-  width: calc(50% - 1vw);
-  display: flex;
-  flex-direction: row-reverse;
-  margin-right: 1vw;
+  .pair p:nth-child(4) {
+    color: $light-blue;
+  }
 
-  &:last-child {
-    margin-right: 0;
+  .film-flex {
+    width: calc(50% - 1vw);
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 1vw;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 1vw;
+    }
+  }
+
+  .pair-info {
     margin-left: 1vw;
   }
-}
 
-.pair-info {
-  margin-left: 1vw;
-}
+  .pair-block {
+    padding: 2vw 0;
 
-.pair-block {
-  padding: 2vw 0;
-
-  &:nth-child(odd) {
-    background-color: #0C090A;
+    &:nth-child(odd) {
+      background-color: #0C090A;
+    }
   }
-}
 
-.pair-info.english  {
-  // margin-right: 1vw;
-} 
+  .pair-info.english  {
+    // margin-right: 1vw;
+  } 
 
-.pair-info, .pair-poster {
-  width: 50%;
-}
+  .pair-info, .pair-poster {
+    width: 50%;
+  }
 
-.date {
-  font-weight: bold;
-  padding-top: 5px;
+  .date {
+    font-weight: bold;
+    padding-top: 5px;
+  }
+
 }
