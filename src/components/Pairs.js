@@ -41,7 +41,7 @@ class Pairs extends Component {
 
   render() {
     return (
-      <section className='filmPair' ref={this.props.PairsRef}>
+      <section className='pairs' ref={this.props.PairsRef}>
         <div className='wrapper'>
           <h3>Movies To Watch</h3>
         </div>

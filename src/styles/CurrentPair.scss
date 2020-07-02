@@ -1,4 +1,49 @@
+@import './fontsAndColours.scss';
+
 .save-pair.disabled {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.film-pair-header {
+  padding: 15px 15px 15px 0;
+}
+
+.film-pair-buttons {
+  margin: 20px 0 50px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.film-pair-buttons button {
+  background-color: #191919;
+  color: $light-blue;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid $light-blue;
+  padding: 10px 30px;
+  transition: all .2s ease-in-out;
+
+  &:hover, &:active, &:focus {
+    border-color: $light-blue;
+    box-shadow: 0px 2px 25px 2px $tan;
+    transform: scale(1.02);
+  }
+}
+
+.film-pair-buttons button:first-of-type {
+  margin-right: 20px;
+}
+
+@media (max-width: 366px) {
+
+  .film-pair-buttons button {
+    flex-basis: 100%;
+  }
+
+  .film-pair-buttons button:first-of-type {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
