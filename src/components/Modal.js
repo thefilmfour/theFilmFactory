@@ -21,7 +21,7 @@ class Modal extends Component {
               <p className="date">{film.release_date.slice(0, 4)}</p>
               <p><FontAwesomeIcon icon={faStar} /> {film.vote_average}/10</p>
               <p>{film.overview}</p>
-              <button className='select' type='button' onClick={selectFilm}>Select this movie</button>
+              <button className='select shadow' type='button' onClick={selectFilm}>Select this movie</button>
             </div>
           </div>
         </div>
