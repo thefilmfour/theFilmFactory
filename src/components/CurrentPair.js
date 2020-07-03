@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-// import '../styles/CurrentPair.scss';
 import firebase from '../firebase';
 import FilmPair from './FilmPair';
 
@@ -17,11 +16,6 @@ class CurrentPair extends Component {
    * Connected to an event listener on the Save Pair button
   */
   savePair = () => {
-
-    // These lines will remove CurrentPair
-    // Bug: If these two lines are used, the scrollToPair method will not work properly because of CurrentPair disappearing 
-    // this.props.updateEnglishFilmState({});
-    // this.props.updateForeignFilmState({});
 
     const dbRef = firebase.database().ref();
 
