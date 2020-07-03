@@ -3,7 +3,6 @@ import axios from 'axios';
 import ErrorMessage from './ErrorMessage';
 import LoadingPage from './LoadingPage';
 import Modal from './Modal';
-// import '../styles/Search.scss';
 
 class Search extends Component {
 
@@ -175,7 +174,7 @@ class Search extends Component {
         <section className='films' ref={this.filmsRef}>
           {
             this.state.foreignFilms.length
-            ? <h3>If you liked <span>{this.props.englishFilm.title}</span>, then maybe you'll like...</h3>
+            ? <h2>If you liked {this.props.englishFilm.title}, then maybe you'll like...</h2>
             : this.state.englishFilms.length
             ? <h2>Did you mean...</h2>
             : null

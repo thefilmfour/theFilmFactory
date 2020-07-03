@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import '../styles/Modal.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 

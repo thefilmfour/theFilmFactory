@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// https://github.com/FortAwesome/react-fontawesome
 import { faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
-// import '../styles/Footer.scss';
 
 class Footer extends Component {
 
@@ -12,7 +10,7 @@ class Footer extends Component {
 
         <section className='team-info'>
 
-          <p className="team-made">Made with <span className='heart' aria-label='love'>♥</span> by <span className='team-group'>The Film Four</span></p>
+          <p className='team-made'>Made with <span className='heart' aria-label='love'>♥</span> by <span className='team-group'>The Film Four</span></p>
           <ul className='team-members'>
             <ul className='team-member'>
               <li className='team-name'>Eyel</li>
@@ -95,7 +93,7 @@ class Footer extends Component {
 
         <section className='attributions'>
           <p>All films provided by <a href='https://www.themoviedb.org/documentation/api'>The Movie DB API</a></p>
-          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a> and <a href="http://www.freepik.com/" title="Freepik">Freepik</a></p>
+          <p>All icons provided by <a href='https://fontawesome.com/license'>Font Awesome</a> and <a href='http://www.freepik.com/' title='Freepik'>Freepik</a></p>
         </section>
         
       </footer>

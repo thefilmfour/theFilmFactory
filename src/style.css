@@ -244,14 +244,11 @@ header {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh; }
 
 .welcome {
-  position: absolute;
-  top: 125px;
+  position: relative;
+  top: 50px;
   text-align: center; }
   .welcome button {
     background-color: #191919;
@@ -261,12 +258,6 @@ header {
     font-size: 20px;
     border: 2px solid #DBF0EF;
     padding: 10px 30px; }
-
-section.films {
-  padding: 3vw 0; }
-  section.films h2 {
-    padding: 25px 15px 15px 0;
-    text-transform: none; }
 
 form {
   text-align: center;
@@ -285,18 +276,11 @@ input[type=submit] {
   width: 150px;
   margin-left: 10px; }
 
-.films h3 {
-  padding: 15px; }
-
-.shadow {
-  transition: all .2s ease-in-out; }
-
-.shadow:hover {
-  box-shadow: 0px 2px 25px 2px #ECC79C;
-  transform: scale(1.02); }
-
 section.films {
   padding: 3vw 0; }
+  section.films h2 {
+    padding: 25px 15px 15px 0;
+    text-transform: none; }
 
 ul.grid-container {
   display: grid;
@@ -471,8 +455,7 @@ button.select {
   text-transform: uppercase;
   font-weight: bold;
   border: 2px solid #DBF0EF;
-  padding: 10px 30px;
-  transition: all .2s ease-in-out; }
+  padding: 10px 30px; }
 
 .film-pair-buttons button:first-of-type {
   margin-right: 20px; }

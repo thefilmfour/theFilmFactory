@@ -1,6 +1,3 @@
-// @import './fontsAndColours.scss';
-// @import './global.scss';
-
 main {
 
   .pair-block {
@@ -65,27 +62,26 @@ main {
 
     main {
 
+      .film-flex {
+        // width: 100%;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: center;
+      }
 
-    
-    .film-flex {
-      // width: 100%;
-      flex-direction: column-reverse;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .pair-info, .pair-poster {
-      width: 80%;
-    }
+      .pair-info, .pair-poster {
+        width: 80%;
+      }
 
 
-    .pair-poster {
-      padding-bottom: 15px;
-    }
+      .pair-poster {
+        padding-bottom: 15px;
+      }
 
-    &:nth-child(odd) {
-      background-color: #191919;
-    }
+      &:nth-child(odd) {
+        background-color: #191919;
+      }
+      
     }
   }
 
