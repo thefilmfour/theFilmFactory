@@ -83,7 +83,7 @@ class Search extends Component {
     }).then( response => {
 
       if (!response.data.total_pages) {
-        this.setState({ hasError:true });
+        this.setState({ hasError: true });
       }
 
       response.data.results.forEach( film => {
@@ -102,8 +102,6 @@ class Search extends Component {
       this.setState({ hasError: true });
 
     });
-
-    // || !this.state.englishFilms.length
 
     this.setState({ userTextInput: '', englishFilms, isLoading: false });
 
