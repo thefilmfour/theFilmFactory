@@ -81,20 +81,29 @@ class Search extends Component {
         include_adult: false,
       }
     }).then( response => {
+
+      if (!response.data.total_pages) {
+        this.setState({ hasError:true });
+      }
+
       response.data.results.forEach( film => {
+        
         if (film.original_language === 'en' && film.poster_path && englishFilms.length < 10) {
           englishFilms.push(film);
-        }
+        } 
+
+        // Scrolls to the list of English films
+        this.scrollToFilms();
+
       });
 
-      // Scrolls to the list of English films
-      this.scrollToFilms();
-
     }).catch( error => {
-      if (error && !this.state.englishFilms.length) {
-        this.setState({ hasError: true });
-      }
+
+      this.setState({ hasError: true });
+
     });
+
+    // || !this.state.englishFilms.length
 
     this.setState({ userTextInput: '', englishFilms, isLoading: false });
 
